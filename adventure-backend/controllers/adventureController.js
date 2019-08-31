@@ -57,10 +57,22 @@ router.get('/:id', async (req, res, next) =>{
         res.send(err)
     }
 })
-// edit route -- edit form
 
 // update route
-
+router.put('/:id', async (req, res, next)=>{
+    try{
+        const updatedAdventure = await Adventures.findByIdAndUpdate(req.params.id, req.body, {new:true});
+        res.json({
+            status: {
+                code: 200,
+                message: "adventure successfully updated"
+            }, 
+            data: updatedAdventure
+        })
+    }catch(err){
+        res.send(err)
+    }
+})
 // delete route
 
 
