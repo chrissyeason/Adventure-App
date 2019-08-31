@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import NewAdventure from './NewAdventure/NewAdventure';
+import AdventureList from './AdventuresList/AdventureList'
 
-class Adventures extends Component {
+class AdventuresContainer extends Component {
     constructor(){
         super();
         this.state = {
@@ -35,9 +36,10 @@ class Adventures extends Component {
             <div>
                 <h1>this is adventure component</h1>
                 <NewAdventure addAdventure={this.addAdventure}/>
+                <AdventureList adventures={this.state.adventures}/>
             </div>
         )
     }
 }
 
-export default Adventures;
+export default AdventuresContainer;

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import Adventures from './components/AdventuresList/Adventures';
+import AdventuresContainer from './components/AdventuresContainer/AdventuresContainer';
 import AuthGateway from './components/AuthGateway/AuthGateway';
 
 class App extends Component {
@@ -37,7 +37,7 @@ class App extends Component {
       <div className="App">
         {
           this.state.loggedIn ?
-        <Adventures /> :
+        <AdventuresContainer /> :
         <AuthGateway handleRegistration={this.handleRegistration}/> 
         }
       </div>
