@@ -8,8 +8,9 @@ class AuthGateway extends Component {
         render(){
             return(
                 <div>
-                    <h1>register as anew user</h1>
+                    <h1>register as a new user</h1>
                     <Register handleRegistration={this.props.handleRegistration}/>
+                    
                 </div>
             )
         }
