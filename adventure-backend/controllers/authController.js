@@ -3,6 +3,16 @@ const router = express.Router();
 const User = require('../models/user');
 const bcrypt = require('bcryptjs')
 
+// index route
+router.get('/', async (req, res) =>{
+    try {
+        // const allAdventures = await Adventures.find();
+        res.send('user route is working')
+    }catch(err){
+        res.send(err)
+    }
+})
+// login route
 router.post('/login', async (req, res) =>{
     // first query the databse to see if the user exists
     try{
@@ -17,7 +27,7 @@ router.post('/login', async (req, res) =>{
                 req.session.username = foundUser.username;
                 req.session.logged = true;
 
-                res.redirect('/authors')
+                res.redirect('/user')
             }else{
                 // send message backt ot client that the username or password is incorrect
                 req.session.message = 'Username or Password incorrect';
@@ -28,7 +38,7 @@ router.post('/login', async (req, res) =>{
         res.send(err);
     }
 });
-
+// register route
 router.post('/register', async (req, res) =>{
     // encrypt password
     const password = req.body.password;
@@ -47,12 +57,17 @@ router.post('/register', async (req, res) =>{
         req.session.username = createdUser.username;
         req.session.logged = true;
         
-        res.redirect('/authors');
+        res.json({
+            status: {
+                code: 201
+            },
+            data: createdUser
+        })
     }catch(err){
         res.send(err)
     }
 });
-
+// logout route
 router.get('/logout', (req, res) =>{
     req.session.destroy((err) =>{
         if(err){

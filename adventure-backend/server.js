@@ -23,7 +23,7 @@ app.use(session({
 }));
 
 // Set up CORS as middleware so any client can make a request to our server
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use((req, res, next)=>{
@@ -37,7 +37,7 @@ const authController = require('./controllers/authController');
 
 // controllers routes
 app.use('/adventures', adventureController);
-app.use('/author', authController);
+app.use('/user', authController);
 
 app.listen(9000, (req, res) => {
     console.log('listening on port 9000');
