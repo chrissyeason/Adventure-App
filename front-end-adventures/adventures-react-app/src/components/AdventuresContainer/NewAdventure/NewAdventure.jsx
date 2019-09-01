@@ -27,7 +27,7 @@ class NewAdventure extends Component {
                 <input type="text" name="where" placeholder="where'd you go?" onChange={this.handleChange}/>
                 <input type="text" name="when" placeholder="when did you go?" onChange={this.handleChange}/>
                 <textarea type="text" name="description" placeholder="tell us about it" onChange={this.handleChange}></textarea>
-                <img src='#' alt="will add soon" />
+                <input type="text" name="image" placeholder="image" onChange={this.handleChange}/>
                 <input type="submit"/>
             </form>
         )

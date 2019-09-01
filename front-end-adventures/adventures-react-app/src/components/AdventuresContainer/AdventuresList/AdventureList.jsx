@@ -8,6 +8,7 @@ function AdventureList(props){
                     <p>{adventure.where}</p>
                     <p>{adventure.when}</p>
                     <p>{adventure.description}</p>
+                    <img src={adventure.image}/>
             </li>
         )
     })
