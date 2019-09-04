@@ -53,7 +53,7 @@ class Register extends Component {
     
     render(){
         return(
-            <div>
+            <div className="Register">
         <Button color="white" onClick={this.toggle}>register</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Register</ModalHeader>

@@ -52,20 +52,19 @@ class Login extends Component {
     
     render(){
         return(
-            <div>
-        <Button color="white" onClick={this.toggle}>login</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Login</ModalHeader>
-          <ModalBody>
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" name="username" placeholder="username" onChange={this.handleChange}/>
-                <input type="password" name="password" placeholder="password" onChange={this.handleChange}/>
-                <input type="submit" value="submit" onClick={this.toggle}/>
-            </form>
-          </ModalBody>
-          
-        </Modal>
-      </div>
+            <div className="Login">
+                <Button color="white" onClick={this.toggle}>login</Button>
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                <ModalHeader toggle={this.toggle}>Login</ModalHeader>
+                <ModalBody>
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" name="username" placeholder="username" onChange={this.handleChange}/>
+                        <input type="password" name="password" placeholder="password" onChange={this.handleChange}/>
+                        <input type="submit" value="submit" onClick={this.toggle}/>
+                    </form>
+                </ModalBody>
+                </Modal>
+            </div>
         )
     }
 }

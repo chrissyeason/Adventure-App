@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Oswald&display=swap');
+
+.nav-bar {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    background-color: white;
+    height: 3em;
+}
+
+.discover-add-btn {
+    margin-left: 60px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    margin-top: 15px;
+    display: flex;
+}
+.nav-bar p{
+    padding-right: 30px;
+}
+
+.nav-bar h4 {
+    margin-left: 25px;
+    margin-top: 10px;
+    font-family: 'Oswald', sans-serif;
+}
+.register-nav {
+    display: flex;
+}
+.register-nav Button {
+    font-size: 14px;
+    padding-top: 14px;
+}
+.Register {
+    position: absolute;
+    right: 11%;
+}
+
+.Login {
+    position: absolute;
+    right: 18%;
+}
