@@ -1,19 +1,15 @@
-import React, {Component} from 'react';
-import Register from './Register/Register'
+import React from 'react';
+import Register from './Register/Register';
+import Login from './Login/Login';
+import '../Navigation/navigation.css'
 
-class AuthGateway extends Component {
-    constructor(){
-        super();
-    }    
-        render(){
-            return(
-                <div>
-                    <h1>register as a new user</h1>
-                    <Register handleRegistration={this.props.handleRegistration}/>
-                    
-                </div>
-            )
-        }
-    }
+function AuthGateway(){
+    return(
+        <div className="register-nav">
+            <Register />
+            <Login />
+        </div>
+    )
+}
 
 export default AuthGateway;
