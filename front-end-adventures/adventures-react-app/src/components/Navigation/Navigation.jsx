@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Register from '../AuthGateway/Register/Register';
+import AuthGateway from '../AuthGateway/AuthGateway';
 
 class Navigation extends Component {
     constructor(){
@@ -22,7 +22,7 @@ logOut = () =>{
                     {
                     this.state.loggedIn ?
                         <button onClick={this.logOut}>log out</button> :
-                        <Register />
+                        <AuthGateway /> 
                     }
                         
                 </div> 

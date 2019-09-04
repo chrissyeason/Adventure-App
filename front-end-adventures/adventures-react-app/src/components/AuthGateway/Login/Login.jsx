@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import './Register.css';
 
-class Register extends Component {
+class Login extends Component {
     constructor(){
         super();
         this.state = {
@@ -32,7 +31,7 @@ class Register extends Component {
     handleRegistration = async (formData) =>{
         console.log(formData);
         console.log("registering");
-        const registerResponse = await fetch('http://localhost:9000/user/register', {
+        const registerResponse = await fetch('http://localhost:9000/user/login', {
           method: 'POST',
           body: JSON.stringify(formData),
           credentials: "include",
@@ -54,9 +53,9 @@ class Register extends Component {
     render(){
         return(
             <div>
-        <Button color="white" onClick={this.toggle}>register</Button>
+        <Button color="white" onClick={this.toggle}>login</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Register</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Login</ModalHeader>
           <ModalBody>
             <form onSubmit={this.handleSubmit}>
                 <input type="text" name="username" placeholder="username" onChange={this.handleChange}/>
@@ -70,4 +69,4 @@ class Register extends Component {
         )
     }
 }
-export default Register;
+export default Login;
