@@ -15,8 +15,13 @@
     margin-top: 15px;
     display: flex;
 }
-.nav-bar p{
+.nav-bar li{
     padding-right: 30px;
+    list-style: none;
+    color: black;
+}
+.nav-bar a {
+    color: black;
 }
 
 .nav-bar h4 {
