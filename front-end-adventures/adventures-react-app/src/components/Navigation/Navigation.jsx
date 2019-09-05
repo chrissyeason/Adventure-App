@@ -21,8 +21,8 @@ logOut = () =>{
                 <div className="nav-bar">
                     <h4>DO COOL SHIT</h4>
                     <div className="discover-add-btn">
-                        <li><a href="/adventures">discover</a></li>
-                        <li><a href="/add">add</a></li>
+                        <button><a href="/adventures">discover</a></button>
+                        <button><a href="/add">add</a></button>
                     </div>
                     {
                     this.state.loggedIn ?

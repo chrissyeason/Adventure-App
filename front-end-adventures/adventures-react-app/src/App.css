@@ -15,4 +15,43 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.get-inspired{
+  display: inline-grid;
+  grid-template-columns: 50% 50%;
+  padding-top: 10%;
+  max-width: 90%;
+  margin-bottom: 10%;
+}
+.get-inspired p{
+  text-align: left;
+  padding-right: 20%;
+  font-family: 'Lato', sans-serif;
 
+}
+.get-inspired h2{
+  text-align: left;
+  padding-right: 5%;
+  padding-top: 10%;
+  font-family: 'Oswald', sans-serif;
+  font-size: 3em;
+}
+.get-inspired img {
+  max-width: 75%;
+}
+.get-inspired button {
+  background-color: #2A9D8F;
+  display: block;
+  text-align: left;
+  margin-top: 25px;
+}
+.get-inspired a {
+  color: white;
+  font-family: 'Lato', sans-serif;
+}
+.get-inspired a:hover{
+  text-decoration: none;
+  color: white;
+}
+.home-photo {
+  width: 100%;
+}

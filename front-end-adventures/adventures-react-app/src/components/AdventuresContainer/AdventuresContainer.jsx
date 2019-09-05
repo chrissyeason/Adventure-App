@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NewAdventure from './NewAdventure/NewAdventure';
-import AdventureList from './AdventuresList/AdventureList'
+import AdventureList from './AdventuresList/AdventureList';
+import '../AdventuresContainer/AdventuresContainer.css';
 
 class AdventuresContainer extends Component {
     constructor(){
@@ -33,7 +34,7 @@ class AdventuresContainer extends Component {
     }
     render(){
         return(
-            <div>
+            <div className="AdventureContainer">
                 <h1>this is adventure component</h1>
                 <NewAdventure addAdventure={this.addAdventure}/>
                 <AdventureList adventures={this.state.adventures}/>
