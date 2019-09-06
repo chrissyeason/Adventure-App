@@ -13,10 +13,18 @@ class Navigation extends Component {
           username: null
         }
       }
-logOut = () =>{
-    this.setState({
-        loggedIn: false
-    })
+logOut = async (id) =>{
+    console.log(id);
+    try{
+      const logOut = await fetch(`http://localhost:9000/user/logout`, {
+        method: "GET"
+      })
+        this.setState({
+          loggedIn: false
+          })
+    }catch(err){
+      console.log(err)
+    }
 }      
 handleRegistration = async (formData) =>{
     console.log(formData);
@@ -52,7 +60,7 @@ handleLogin = async (formData) =>{
     })
     const parsedResponse = await registerResponse.json();
     console.log(parsedResponse);
-    if(parsedResponse.status.code === 201){
+    if(parsedResponse.status.code === 200){
       console.log('registration successful');
       this.setState({
         loggedIn: true,

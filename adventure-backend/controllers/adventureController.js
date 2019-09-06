@@ -5,7 +5,7 @@ const Adventures = require('../models/adventure');
 // index route
 router.get('/', async (req, res) =>{
     try {
-        const allAdventures = await Adventures.find();
+        const allAdventures = await Adventures.find().populate('user');
         // this is the response to react
         res.json({
             status: {
