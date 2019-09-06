@@ -47,6 +47,8 @@
 .get-inspired a {
   color: white;
   font-family: 'Lato', sans-serif;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .get-inspired a:hover{
   text-decoration: none;

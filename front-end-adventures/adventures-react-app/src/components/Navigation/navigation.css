@@ -54,3 +54,9 @@
     position: absolute;
     right: 20%;
 }
+#log-out {
+    position: absolute;
+    right: 11%;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px; 
+}

@@ -15,6 +15,48 @@ logOut = () =>{
         loggedIn: false
     })
 }      
+handleRegistration = async (formData) =>{
+    console.log(formData);
+    console.log("registering");
+    const registerResponse = await fetch('http://localhost:9000/user/register', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    const parsedResponse = await registerResponse.json();
+    console.log(parsedResponse);
+    if(parsedResponse.status.code === 201){
+      console.log('registration successful');
+      this.setState({
+        loggedIn: true,
+        username: parsedResponse.data.username
+      })
+    }
+}
+handleLogin = async (formData) =>{
+    console.log(formData);
+    console.log("registering");
+    const registerResponse = await fetch('http://localhost:9000/user/login', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    const parsedResponse = await registerResponse.json();
+    console.log(parsedResponse);
+    if(parsedResponse.status.code === 201){
+      console.log('registration successful');
+      this.setState({
+        loggedIn: true,
+        username: parsedResponse.data.username
+      })
+    }
+}
     
         render(){
             return(
@@ -26,8 +68,8 @@ logOut = () =>{
                     </div>
                     {
                     this.state.loggedIn ?
-                        <button onClick={this.logOut}>log out</button> :
-                        <AuthGateway /> 
+                        <button id="log-out" onClick={this.logOut}>log out</button> :
+                        <AuthGateway handleRegistration={this.handleRegistration} handleLogin={this.handleLogin}/> 
                     }
                         
                 </div> 
