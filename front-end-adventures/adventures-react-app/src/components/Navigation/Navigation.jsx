@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import AuthGateway from '../AuthGateway/AuthGateway';
+import { Route } from 'react-router-dom';
+import NewAdventure from '../AdventuresContainer/NewAdventure/NewAdventure';
+import AdventuresList from '../AdventuresContainer/AdventuresList/AdventureList';
 import './navigation.css';
 
 class Navigation extends Component {
@@ -62,9 +65,9 @@ handleLogin = async (formData) =>{
             return(
                 <div className="nav-bar">
                     <h4>DO COOL SHIT</h4>
-                    <div className="discover-add-btn">
-                        <button><a href="/adventures">discover</a></button>
-                        <button><a href="/add">add</a></button>
+                    <div>
+                        <button id="discover"><Route path="/adventures" component={AdventuresList}/>discover</button>
+                        <button id="add"><Route path="/add" component={NewAdventure} /></button>
                     </div>
                     {
                     this.state.loggedIn ?

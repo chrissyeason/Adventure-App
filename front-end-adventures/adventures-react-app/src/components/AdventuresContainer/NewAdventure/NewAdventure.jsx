@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
+import './NewAdventure.css';
 
 class NewAdventure extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             what: '',
             where: '',
@@ -33,7 +33,7 @@ class NewAdventure extends Component {
     render(){
         return(
             <div className="new-adventure">
-                <Button color="white" onClick={this.toggle}>add adventure</Button>
+                <Button id="addButton" color="white" onClick={this.toggle}>add</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalHeader toggle={this.toggle}>Add your adventure</ModalHeader>
                 <ModalBody>
