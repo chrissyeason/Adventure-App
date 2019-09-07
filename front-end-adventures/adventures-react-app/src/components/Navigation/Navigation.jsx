@@ -13,7 +13,8 @@ class Navigation extends Component {
         this.state = {
           loggedIn: false,
           username: null,
-          renderNewAdventure: false
+          renderNewAdventure: false,
+          adventures: []
         }
       }
 logOut = async () =>{
@@ -73,7 +74,30 @@ handleLogin = async (formData) =>{
       })
     }
 }
+// addAdventure = async (formData) =>{
+//   console.log("adding adventure");
+//   try{
+//       const newAdventure = await fetch('http://localhost:9000/adventures',{
+//           method: 'POST',
+//           body: JSON.stringify(formData),
+//           credentials: "include",
+//           headers: {
+//               "Content-Type": "application/json"
+//           }
+//       })
+//       const parsedResponse = await newAdventure.json();
+//       console.log(parsedResponse);
+//       if(parsedResponse.status.code === 200){
+//           this.setState({
+//               adventures: [...this.state.adventures, parsedResponse.data]
+//           })
+//       }
+//   }catch(err){
+//       console.log(err)
+//   }
+// }
 toggle =()=> {
+  console.log("renderNewAdventure")
   this.setState(prevState => ({
     renderNewAdventure: !prevState.renderNewAdventure
   }));
@@ -84,7 +108,6 @@ toggle =()=> {
                 <div className="nav-bar">
                     <h4>DO COOL SHIT</h4>
                     <div>
-                        {/* <Route path="/adventures"  component={AdventuresContainer} /> */}
                         <button id="discover"><a href="/adventures">discover</a></button>
                         {/* <Route path="/add" component={NewAdventure} /> */}
                         <button onClick={this.toggle}>add</button>
@@ -97,9 +120,11 @@ toggle =()=> {
                     }
                     {
                       this.state.renderNewAdventure ?
-                      <NewAdventure displayFromAddButtonClick={true}/> :
+                      <NewAdventure displayFromAddButtonClick={true} addAdventure={this.props.addAdventure}/> :
                       ''
                     }
+                    {/* <AdventuresContainer adventures={this.state.adventures}/> */}
+
                 </div> 
             )
         }

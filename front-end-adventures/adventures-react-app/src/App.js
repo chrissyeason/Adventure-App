@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 import AdventuresContainer from './components/AdventuresContainer/AdventuresContainer';
@@ -6,28 +6,49 @@ import AdventureList from './components/AdventuresContainer/AdventuresList/Adven
 import NewAdventure from './components/AdventuresContainer/NewAdventure/NewAdventure';
 import Navigation from './components/Navigation/Navigation';
 import Home from './components/Home/Home';
-let showModal = true;
 
-const toggle = () =>{
-  console.log("modal is active")
-  if(!showModal){
-    return true;
-  }else{
-    return false;
+class App extends Component {
+  constructor(){
+    super();
+    this.state={
+      adventures: []
+    }
   }
-  App();
-}
-function App(){
+  addAdventure = async (formData) =>{
+    console.log("adding adventure");
+    try{
+        const newAdventure = await fetch('http://localhost:9000/adventures',{
+            method: 'POST',
+            body: JSON.stringify(formData),
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        const parsedResponse = await newAdventure.json();
+        console.log(parsedResponse);
+        if(parsedResponse.status.code === 200){
+            this.setState({
+                adventures: [...this.state.adventures, parsedResponse.data]
+            })
+        }
+    }catch(err){
+        console.log(err)
+    }
+  }
+  render(){
     return (
       <div className="App">
-        <Navigation toggle={toggle}/>
+        <Navigation addAdventure={this.addAdventure}/>
         <main>
           <Route exact path="/" component={Home} />        
-          <Route exact path="/adventures" component={AdventuresContainer} />
-          <Route path="/add"  render={(props)=><NewAdventure {...props} showModal ={()=>toggle()}/>} />
+          <Route exact path="/adventures" 
+            render={(props) => <AdventuresContainer {...props} adventures={this.state.adventures} addAdventure={this.addAdventure}/>}
+            />
         </main>
       </div>
     );
+}
 }
 
 export default App;

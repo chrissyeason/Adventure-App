@@ -28,34 +28,16 @@ class NewAdventure extends Component {
     }
     handleSubmit = (e) =>{
         e.preventDefault();
-        this.addAdventure(this.state)
+        console.log(this.props)
+        console.log("handle submit")
+        this.props.addAdventure(this.state)
         this.setState({
             modal: false
         })
     }
-    addAdventure = async (formData) =>{
-        console.log("adding adventure");
-        try{
-            const newAdventure = await fetch('http://localhost:9000/adventures',{
-                method: 'POST',
-                body: JSON.stringify(formData),
-                credentials: "include",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-            const parsedResponse = await newAdventure.json();
-            console.log(parsedResponse);
-            if(parsedResponse.status.code === 200){
-                this.setState({
-                    adventures: [...this.state.adventures, parsedResponse.data]
-                })
-            }
-        }catch(err){
-            console.log(err)
-        }
-    }
+    
     componentDidMount(){
+        console.log("component did mount")
         if(this.props.displayFromAddButtonClick){
             this.toggle()
         }
