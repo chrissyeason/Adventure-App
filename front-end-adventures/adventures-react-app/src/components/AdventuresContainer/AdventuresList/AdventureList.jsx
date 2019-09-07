@@ -13,6 +13,9 @@ function AdventureList(props){
                     <p>{adventure.description}</p>
                     {/* <p>uploaded by: {adventure.user.username}</p> */}
                     <img src={adventure.image} alt={adventure.description}/>
+
+                    <button onClick={() => {props.deleteAdventure(adventure._id)}}>delete</button>
+
                     <UpdateAdventure updateAdventure={props.updateAdventure}
                         what={adventure.what}
                         where={adventure.where}

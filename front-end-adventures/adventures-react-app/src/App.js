@@ -78,6 +78,27 @@ class App extends Component {
         })
       })
     }
+    deleteAdventure = async (id) =>{
+      console.log("this is id", id)
+      try{
+        const adventureDeleted = await fetch(`http://localhost:9000/adventures/${id}`,{
+          method: 'DELETE',
+          credentials: 'include',
+        })
+        const parsedResonse = await adventureDeleted.json();
+        console.log(parsedResonse)
+        if(parsedResonse.status.code === 200){
+          console.log("made it to 200")
+          this.setState({
+            adventures: this.state.adventures.filter(function(adventure){
+              return adventure._id !== id;
+            })
+          })
+        }
+      }catch(err){
+        console.log(err)
+      }
+    }
 
   render(){
     return (
@@ -86,7 +107,7 @@ class App extends Component {
         <main>
           <Route exact path="/" component={Home} />        
           <Route exact path="/adventures" 
-            render={(props) => <AdventuresContainer {...props} adventures={this.state.adventures} addAdventure={this.addAdventure} updateAdventure={this.updateAdventure}/>}
+            render={(props) => <AdventuresContainer {...props} adventures={this.state.adventures} addAdventure={this.addAdventure} updateAdventure={this.updateAdventure} deleteAdventure={this.deleteAdventure}/>}
             />
         </main>
       </div>

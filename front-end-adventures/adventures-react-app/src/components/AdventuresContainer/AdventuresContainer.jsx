@@ -19,7 +19,7 @@ class AdventuresContainer extends Component {
             <div className="AdventureContainer">
                 <h1>this is adventure component</h1>
                 <NewAdventure addAdventure={this.props.addAdventure}/>
-                <AdventureList adventures={this.props.adventures} updateAdventure={this.props.updateAdventure}/>
+                <AdventureList adventures={this.props.adventures} updateAdventure={this.props.updateAdventure} deleteAdventure={this.props.deleteAdventure}/>
 
             </div>
         )

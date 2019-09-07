@@ -77,6 +77,21 @@ router.put('/:id', async (req, res)=>{
 })
 
 // delete route
+router.delete('/:id', async (req, res)=>{
+    try{
+        const deleteAdventure = await Adventures.findByIdAndRemove(req.params.id);
+        console.log("fetch was made")
+        res.json({
+            status: {
+                code: 200,
+                message: 'deleted successfully'
+            },
+            data: deleteAdventure
+        })
+    }catch(err){
+        res.send(err)
+    }
+})
 
 
 module.exports = router;
