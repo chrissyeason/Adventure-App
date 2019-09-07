@@ -28,12 +28,42 @@ class NewAdventure extends Component {
     }
     handleSubmit = (e) =>{
         e.preventDefault();
-        this.props.addAdventure(this.state)
+        this.addAdventure(this.state)
+        this.setState({
+            modal: false
+        })
+    }
+    addAdventure = async (formData) =>{
+        console.log("adding adventure");
+        try{
+            const newAdventure = await fetch('http://localhost:9000/adventures',{
+                method: 'POST',
+                body: JSON.stringify(formData),
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            const parsedResponse = await newAdventure.json();
+            console.log(parsedResponse);
+            if(parsedResponse.status.code === 200){
+                this.setState({
+                    adventures: [...this.state.adventures, parsedResponse.data]
+                })
+            }
+        }catch(err){
+            console.log(err)
+        }
+    }
+    componentDidMount(){
+        if(this.props.displayFromAddButtonClick){
+            this.toggle()
+        }
     }
     render(){
         return(
             <div className="new-adventure">
-                <Button id="addButton" color="white" onClick={this.toggle}>add</Button>
+                <Button id="addButton" color="white" onClick={this.toggle}></Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalHeader toggle={this.toggle}>Add your adventure</ModalHeader>
                 <ModalBody>

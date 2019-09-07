@@ -1,30 +1,35 @@
 import React, {Component} from 'react';
 import AuthGateway from '../AuthGateway/AuthGateway';
+import {Link} from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import NewAdventure from '../AdventuresContainer/NewAdventure/NewAdventure';
 import AdventuresList from '../AdventuresContainer/AdventuresList/AdventureList';
 import './navigation.css';
+import AdventuresContainer from '../AdventuresContainer/AdventuresContainer';
 
 class Navigation extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
           loggedIn: false,
-          username: null
+          username: null,
+          renderNewAdventure: false
         }
       }
-logOut = async (id) =>{
-    console.log(id);
-    try{
-      const logOut = await fetch(`http://localhost:9000/user/logout`, {
-        method: "GET"
+logOut = async () =>{
+    
+    
+      const logOut = await fetch('http://localhost:9000/user/logout', {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        }
       })
-        this.setState({
-          loggedIn: false
-          })
-    }catch(err){
-      console.log(err)
-    }
+        
+    this.setState({
+      loggedIn: false
+      })
 }      
 handleRegistration = async (formData) =>{
     console.log(formData);
@@ -68,21 +73,33 @@ handleLogin = async (formData) =>{
       })
     }
 }
+toggle =()=> {
+  this.setState(prevState => ({
+    renderNewAdventure: !prevState.renderNewAdventure
+  }));
+}
     
         render(){
             return(
                 <div className="nav-bar">
                     <h4>DO COOL SHIT</h4>
                     <div>
-                        <button id="discover"><Route path="/adventures" component={AdventuresList}/>discover</button>
-                        <button id="add"><Route path="/add" component={NewAdventure} /></button>
+                        {/* <Route path="/adventures"  component={AdventuresContainer} /> */}
+                        <button id="discover"><a href="/adventures">discover</a></button>
+                        {/* <Route path="/add" component={NewAdventure} /> */}
+                        <button onClick={this.toggle}>add</button>
+                        
                     </div>
                     {
                     this.state.loggedIn ?
                         <button id="log-out" onClick={this.logOut}>log out</button> :
                         <AuthGateway handleRegistration={this.handleRegistration} handleLogin={this.handleLogin}/> 
                     }
-                        
+                    {
+                      this.state.renderNewAdventure ?
+                      <NewAdventure displayFromAddButtonClick={true}/> :
+                      ''
+                    }
                 </div> 
             )
         }
