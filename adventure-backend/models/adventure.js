@@ -6,7 +6,11 @@ const adventureSchema = new Schema({
     where: String,
     when: String,
     description: String,
-    image: String
+    image: String,
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }
 })
 const Adventure = mongoose.model('Adventure', adventureSchema);
 module.exports = Adventure;

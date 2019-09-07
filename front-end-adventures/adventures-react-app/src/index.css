@@ -5,8 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("/adventure-background.jpg");
+  /* background-image: url("/paula-may-AJqeO_-ifx0-unsplash.jpg");
   background-size: cover;
+  background-repeat: no-repeat; */
 }
 
 code {

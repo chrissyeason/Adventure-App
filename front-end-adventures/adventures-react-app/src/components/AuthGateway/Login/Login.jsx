@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class Login extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             username: null,
             password: null,
@@ -26,29 +26,9 @@ class Login extends Component {
         e.preventDefault();
         // register function coming in from parent
         console.log('submitted the form')
-        this.handleRegistration(this.state)
+        this.props.handleLogin(this.state);
     }
-    handleRegistration = async (formData) =>{
-        console.log(formData);
-        console.log("registering");
-        const registerResponse = await fetch('http://localhost:9000/user/login', {
-          method: 'POST',
-          body: JSON.stringify(formData),
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json"
-          }
-        })
-        const parsedResponse = await registerResponse.json();
-        console.log(parsedResponse);
-        if(parsedResponse.status.code === 201){
-          console.log('registration successful');
-          this.setState({
-            loggedIn: true,
-            username: parsedResponse.data.username
-          })
-        }
-    }
+    
     
     render(){
         return(

@@ -27,11 +27,21 @@ router.post('/login', async (req, res) =>{
                 req.session.username = foundUser.username;
                 req.session.logged = true;
 
-                res.redirect('/user')
+                res.json({
+                    status: {
+                      code: 200
+                    },
+                    data: foundUser
+                  })
             }else{
                 // send message backt ot client that the username or password is incorrect
-                req.session.message = 'Username or Password incorrect';
-                res.redirect('/');
+                res.session.message = 'Username or Password incorrect';
+                res.json({
+                    status: {
+                    code: 500,
+                    message: 'Invalid Credentials'
+                    }
+                })
             }
         }
     }catch(err){
@@ -69,7 +79,9 @@ router.post('/register', async (req, res) =>{
 });
 // logout route
 router.get('/logout', (req, res) =>{
+    console.log("log out works")
     req.session.destroy((err) =>{
+        console.log(req.session)
         if(err){
             res.send(err);
         }else{

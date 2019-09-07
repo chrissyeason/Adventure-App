@@ -3,11 +3,11 @@ import Register from './Register/Register';
 import Login from './Login/Login';
 import '../Navigation/navigation.css'
 
-function AuthGateway(){
+function AuthGateway(props){
     return(
         <div className="register-nav">
-            <Register />
-            <Login />
+            <Register handleRegistration={props.handleRegistration}/>
+            <Login handleLogin={props.handleLogin}/>
         </div>
     )
 }
