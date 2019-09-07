@@ -1,4 +1,5 @@
 import React from 'react';
+import UpdateAdventure from './UpdateAdventure';
 
 function AdventureList(props){
     console.log("this is adventure list")
@@ -12,6 +13,13 @@ function AdventureList(props){
                     <p>{adventure.description}</p>
                     {/* <p>uploaded by: {adventure.user.username}</p> */}
                     <img src={adventure.image} alt={adventure.description}/>
+                    <UpdateAdventure updateAdventure={props.updateAdventure}
+                        what={adventure.what}
+                        where={adventure.where}
+                        when={adventure.when}
+                        description={adventure.description}
+                        id={adventure._id}
+                        />
             </li>
         )
     })
