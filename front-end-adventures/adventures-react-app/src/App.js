@@ -149,7 +149,7 @@ class App extends Component {
       <div className="App">
         <Navigation addAdventure={this.addAdventure} adventures={this.state.adventures} loggedIn={this.state.loggedIn} username={this.state.username} handleRegistration={this.handleRegistration} handleLogin={this.handleLogin}/>
         <main>
-          <Route exact path="/" component={Home} />        
+          <Route exact path="/" render={(props) => <Home {...props} adventures={this.state.adventures} /> }/>       
           <Route exact path="/adventures" 
             render={(props) => <AdventuresContainer {...props} adventures={this.state.adventures} addAdventure={this.addAdventure} updateAdventure={this.updateAdventure} deleteAdventure={this.deleteAdventure} loggedIn={this.state.loggedIn} username={this.state.username}/>}
             />
