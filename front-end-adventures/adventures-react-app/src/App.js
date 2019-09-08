@@ -144,7 +144,6 @@ class App extends Component {
     }
   }
   
-
   render(){
     return (
       <div className="App">
@@ -152,7 +151,7 @@ class App extends Component {
         <main>
           <Route exact path="/" component={Home} />        
           <Route exact path="/adventures" 
-            render={(props) => <AdventuresContainer {...props} adventures={this.state.adventures} addAdventure={this.addAdventure} updateAdventure={this.updateAdventure} deleteAdventure={this.deleteAdventure}/>}
+            render={(props) => <AdventuresContainer {...props} adventures={this.state.adventures} addAdventure={this.addAdventure} updateAdventure={this.updateAdventure} deleteAdventure={this.deleteAdventure} loggedIn={this.state.loggedIn} username={this.state.username}/>}
             />
         </main>
       </div>

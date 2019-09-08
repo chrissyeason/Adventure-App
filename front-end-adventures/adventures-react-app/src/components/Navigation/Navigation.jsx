@@ -41,7 +41,7 @@ class Navigation extends Component {
         render(){
             return(
                 <div className="nav-bar">
-                    <h4>DO COOL SHIT</h4>
+                    <h4><a href="/">DO COOL SHIT</a></h4>
                     <div>
                         <button id="discover"><a href="/adventures">discover</a></button>
                         <button onClick={this.toggle}>add</button>
