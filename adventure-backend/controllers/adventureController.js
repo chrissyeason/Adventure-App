@@ -57,8 +57,6 @@ router.get('/:id', async (req, res, next) =>{
         res.send(err)
     }
 })
-// edit route -- edit form
-
 // update route
 router.put('/:id', async (req, res)=>{
     try{

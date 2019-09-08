@@ -18,9 +18,7 @@ class UpdateAdventure extends Component {
             modal: !prevState.modal
           }));
     }
-    // componentDidMount(){
-    //     this.toggle();
-    // }
+
     handleChange=(e)=>{
         this.setState({
             [e.currentTarget.name]:e.currentTarget.value
@@ -39,10 +37,10 @@ class UpdateAdventure extends Component {
                 <ModalHeader toggle={this.toggle}>Update your adventure</ModalHeader>
                 <ModalBody>
                     <form onSubmit={this.handleSubmit}>
-                        <input type="text" name="what" placeholder="what rad thing did you do?" onChange={this.handleChange}/>
-                        <input type="text" name="where" placeholder="where'd you go?" onChange={this.handleChange}/>
-                        <input type="text" name="when" placeholder="when did you go?" onChange={this.handleChange}/>
-                        <textarea type="text" name="description" placeholder="tell us about it" onChange={this.handleChange}></textarea>
+                        <input type="text" name="what" placeholder={this.props.what} onChange={this.handleChange}/>
+                        <input type="text" name="where" placeholder={this.props.where} onChange={this.handleChange}/>
+                        <input type="text" name="when" placeholder={this.props.when} onChange={this.handleChange}/>
+                        <textarea type="text" name="description" placeholder={this.props.description} onChange={this.handleChange}></textarea>
                         <input type="text" name="image" placeholder="image" onChange={this.handleChange}/>
                         <input type="submit" value="submit" onClick={this.toggle}/>
                     </form>
