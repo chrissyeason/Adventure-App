@@ -45,7 +45,7 @@ class NewAdventure extends Component {
     render(){
         return(
             <div className="new-adventure">
-                <Button id="addButton" color="white" onClick={this.toggle}>add</Button>
+                <Button id="addButton" color="white" onClick={this.toggle}>test add</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalHeader toggle={this.toggle}>Add your adventure</ModalHeader>
                 <ModalBody>

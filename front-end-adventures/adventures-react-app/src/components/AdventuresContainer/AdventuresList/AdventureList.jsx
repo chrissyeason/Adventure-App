@@ -6,6 +6,7 @@ function AdventureList(props){
     console.log("this is currentUser", currentUser)
     console.log("this is adventure list")
     const adventures = props.adventures.map(function(adventure){
+        console.log("this is adventure.user.username", adventure.user.username)
         return(
             <li key={adventure._id}>
 
@@ -13,7 +14,12 @@ function AdventureList(props){
                     <p>{adventure.where}</p>
                     <p>{adventure.when}</p>
                     <p>{adventure.description}</p>
-                    <p>uploaded by: {adventure.user.username}</p>
+                    {/* <button onClick={() => {props.deleteAdventure(adventure._id)}}>delete</button> */}
+                    {
+                        currentUser !== null ?
+                        <p>uploaded by: {adventure.user.username}</p> :
+                        ''
+                    }
                     <img src={adventure.image} alt={adventure.description}/>
                     {
                         currentUser == adventure.user.username ?

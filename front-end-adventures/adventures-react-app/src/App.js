@@ -121,6 +121,7 @@ class App extends Component {
           username: parsedResponse.data.username
         })
       }
+      
   }
   handleLogin = async (formData) =>{
     console.log(formData);
@@ -147,7 +148,7 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <Navigation addAdventure={this.addAdventure} adventures={this.state.adventures} loggedIn={this.state.loggedIn} username={this.state.username} handleRegistration={this.handleRegistration} handleLogin={this.handleLogin}/>
+        <Navigation updateNavState={this.updateNavState} addAdventure={this.addAdventure} adventures={this.state.adventures} loggedIn={this.state.loggedIn} username={this.state.username} handleRegistration={this.handleRegistration} handleLogin={this.handleLogin}/>
         <main>
           <Route exact path="/" render={(props) => <Home {...props} adventures={this.state.adventures} /> }/>       
           <Route exact path="/adventures" 
