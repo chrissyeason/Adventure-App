@@ -1,5 +1,7 @@
 import React from 'react';
 import UpdateAdventure from './UpdateAdventure';
+import './AdventureList.css';
+import AdventureShow from './Adventure-show';
 
 function AdventureList(props){
     const currentUser = props.username
@@ -8,26 +10,37 @@ function AdventureList(props){
     const adventures = props.adventures.map(function(adventure){
         console.log("this is adventure.user.username", adventure.user.username)
         return(
+        
             <li key={adventure._id}>
+                    <img src={adventure.image} alt={adventure.description} className="adventure-list-images"/>
 
-                    <h3>{adventure.what}</h3>
-                    <p>{adventure.where}</p>
-                    <p>{adventure.when}</p>
-                    <p>{adventure.description}</p>
-                    {/* <button onClick={() => {props.deleteAdventure(adventure._id)}}>delete</button> */}
-                    {
+                    {/* <h2 className="list-header">{adventure.what}</h2> */}
+                    <AdventureShow 
+                        what={adventure.what}
+                        where={adventure.where}
+                        description={adventure.description}
+                        image={adventure.image}
+                        username={adventure.user.username}
+                        deleteAdventure={props.deleteAdventure}
+                        _id={adventure._id}
+                        currentUser={props.username}
+                        updateAdventure={props.updateAdventure}
+                        />
+                    {/* <h5 className="list-where">{adventure.where}</h5> */}
+                    {/* <h5>{adventure.when}</h5>
+                    <p>{adventure.description}</p> */}
+                    {/* {
                         currentUser !== null ?
-                        <p>uploaded by: {adventure.user.username}</p> :
+                        <p>uploaded by: <br/>{adventure.user.username}</p> :
                         ''
-                    }
-                    <img src={adventure.image} alt={adventure.description}/>
-                    {
-                        currentUser == adventure.user.username ?
+                    } */}
+                    {/* {
+                        currentUser === adventure.user.username ?
                             <button onClick={() => {props.deleteAdventure(adventure._id)}}>delete</button> :
                         ''
-                    }
-                    {
-                        currentUser == adventure.user.username ?
+                    } */}
+                    {/* {
+                        currentUser === adventure.user.username ?
                             <UpdateAdventure updateAdventure={props.updateAdventure}
                             what={adventure.what}
                             where={adventure.where}
@@ -36,16 +49,17 @@ function AdventureList(props){
                             id={adventure._id}
                             /> :
                             ''
-                    }
-
-                    
+                    }                     */}
             </li>
+            
         )
     })
     return(
-        <ul>
-           {adventures}
-        </ul>
+        
+            <ul className="list-container">
+              {adventures}
+            </ul>
+       
     )
 }
 
