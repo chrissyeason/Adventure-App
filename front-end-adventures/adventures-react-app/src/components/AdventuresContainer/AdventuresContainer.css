@@ -11,8 +11,8 @@
 .description {
     font-size: .75rem;
 }
-.show-modal-header{
-    padding-left: .25rem;
+#show-modal-header .modal-title{
+    padding-left: 0;
 }
 #show-button .btnd:focus, .btnd:active, .btnd.active, .btnd:focus:active {
     background-image: none;

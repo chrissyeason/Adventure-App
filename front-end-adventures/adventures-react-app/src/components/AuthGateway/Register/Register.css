@@ -20,3 +20,6 @@
     -webkit-box-shadow: none;
     box-shadow: none;
   }
+  .modal-image {
+    margin-bottom: 15px;
+  }

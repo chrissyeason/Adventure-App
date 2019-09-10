@@ -23,7 +23,7 @@ class AdventureShow extends Component{
             <div className="show-adventure">
                 <Button id="show-button" color="white" onClick={this.toggle}>{this.props.what}</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                <ModalHeader className="show-modal-header" toggle={this.toggle}>{this.props.what} {this.props.where}</ModalHeader>
+                <ModalHeader id="show-modal-header" toggle={this.toggle}>{this.props.what} {this.props.where}</ModalHeader>
                 <ModalBody>
                     <h1>{this.props.what}</h1>
                     <div className="when-where-subhead">
