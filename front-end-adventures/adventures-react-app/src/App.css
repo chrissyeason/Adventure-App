@@ -5,7 +5,7 @@
   font-family: 'Lato', sans-serif;
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -14,7 +14,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 /* get inspired section */
 .get-inspired{
   display: inline-grid;
@@ -77,4 +77,26 @@ footer a{
 footer a:hover {
   color: #2A9D8F;
   text-decoration: none;
+}
+@media only screen and (max-width: 600px) {
+  .get-inspired {
+    display: inline-block;
+  }
+  #get-inspired-info h2{
+    display: inline-block;
+    padding-right: 0;
+  }
+  #get-inspired-info p{
+    display: inline-block;
+    text-align: center;
+    padding-right: 8%;
+    padding-left: 8%;
+    padding-top: 3%;
+  }
+  #get-inspired-info button{
+    display: inline-block;
+    text-align: center;
+    padding-right: 10%;
+    padding-left: 10%;
+  }
 }

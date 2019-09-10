@@ -40,3 +40,22 @@ h5 {
     font-family: 'Oswald', sans-serif;
     font-size: 32px;
 }
+@media only screen and (max-width: 600px) {
+    .list-container {
+        display: block;
+    }
+    .adventure-list-images {
+        max-width: 350px;
+    }
+    ul.list-container {
+        padding: 0;
+        text-align: center;
+    }
+    .list-container li{
+        display: block;
+        padding-left: 3%;
+    }
+    #show-button {
+        display: inline-block;
+    }
+}
