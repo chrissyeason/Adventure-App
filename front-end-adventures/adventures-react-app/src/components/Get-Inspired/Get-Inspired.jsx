@@ -4,7 +4,7 @@ function GetInspired(){
     return(
         <div className="get-inspired">
           <div>
-            <img src="daniela-cuevas-t7YycgAoVSw-unsplash.jpg" alt="hot air balloon photo"/>
+            <a href="https://www.visitalbuquerque.org/balloon-fiesta/?gclid=CjwKCAjwk93rBRBLEiwAcMapUTHyrSldBiKqsrNhChcf4aOu0RR6DhAx2hE2SbggpNdBDGbHB3RArxoCU8QQAvD_BwE" target="_blank"><img src="daniela-cuevas-t7YycgAoVSw-unsplash.jpg" alt="hot air balloon photo"/></a>
           </div>
           <div>
             <h2>Get Inspired</h2>
