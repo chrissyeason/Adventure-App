@@ -18,8 +18,14 @@ class AdventuresContainer extends Component {
         return(
             <div className="AdventureContainer">
                 
-                {/* <NewAdventure addAdventure={this.props.addAdventure}/> */}
-                <AdventureList currentUser={this.props.username} adventures={this.props.adventures} updateAdventure={this.props.updateAdventure} deleteAdventure={this.props.deleteAdventure} loggedIn={this.props.loggedIn} username={this.props.username}/>
+                
+                <AdventureList 
+                    currentUser={this.props.username}   
+                    adventures={this.props.adventures} 
+                    updateAdventure={this.props.updateAdventure} 
+                    deleteAdventure={this.props.deleteAdventure} 
+                    loggedIn={this.props.loggedIn} 
+                    username={this.props.username}/>
 
             </div>
         )

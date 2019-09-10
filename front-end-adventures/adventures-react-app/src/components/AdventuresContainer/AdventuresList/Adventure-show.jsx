@@ -35,7 +35,7 @@ class AdventureShow extends Component{
                     <p className="description">{this.props.description}</p>
                     <img src={this.props.image} className="modal-image"/>
                     <p>uploaded by: {this.props.username}</p>
-                    <p>{this.props.currentUser}</p>
+                    {/* <p>{this.props.currentUser}</p> */}
                     
                     {
                         this.props.currentUser === this.props.username ?

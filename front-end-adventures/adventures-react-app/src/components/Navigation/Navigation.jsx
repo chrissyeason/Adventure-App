@@ -18,49 +18,36 @@ class Navigation extends Component {
           adventures: []
         }
       }
-  componentDidMount(){
-    this.updateNavState();
-    console.log("componentDidMount updateNavState")
-  }
-  updateNavState = () =>{
-    let isLoggedIn = this.props.loggedIn;
-    if(isLoggedIn == true){
-      this.setState({
-        username:this.props.username,
-        loggedIn: true
-      })
-    }  
-  }
- 
   
-  // handleLogout = async (e) => {  
-  //   const handleLogout = await fetch('http://localhost:9000/user/logout', {
-  //     method: "GET",
-  //     credentials: "include",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     }
-  //   })
-  //   this.setState({
-  //     loggedIn: false
-  //   })
-  // }      
+ startLogOut = () => {
+  this.setState({
+    loggedIn: false
+  })
+  this.props.handleLogout(this.state)
+ }
+  
+   
     
         render(){
             return(
                 <div className="nav-bar">
-                    <h4><a href="/" id="nav-logo">DO COOL SHIT</a></h4>
+                    <a href="/" id="nav-logo"><img src="do-cool-shit-logo.png" id="logo"/></a>
+
                     <div className="discover-button">
                         <button><a href="/adventures" id="discover">discover</a></button>
                         
                     </div>
                     {
                     this.props.loggedIn ?
-                        <button id="log-out" onClick={this.handleLogout}>log out</button> :
-                        <AuthGateway handleRegistration={this.props.handleRegistration} handleLogin={this.props.handleLogin}/> 
+                        <button id="log-out" onClick={this.startLogOut}>log out</button> :
+                        <AuthGateway 
+                            handleRegistration={this.props.handleRegistration} 
+                            handleLogin={this.props.handleLogin}/> 
                     }
                     
-                    <NewAdventure className="Modal" addAdventure={this.props.addAdventure}/>
+                    <NewAdventure className="Modal" 
+                        addAdventure={this.props.addAdventure}
+                        username={this.props.username}/>
                 </div> 
             )
         }

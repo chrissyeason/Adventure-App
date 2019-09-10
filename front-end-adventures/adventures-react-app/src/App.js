@@ -142,19 +142,57 @@ class App extends Component {
         loggedIn: true,
         username: parsedResponse.data.username
       })
-    }
+    }else{
+      alert(parsedResponse.status.message);
+    }    
   }
+  
+  handleLogout = async (e) => {  
+    const handleLogout = await fetch('http://localhost:9000/user/logout', {
+      method: "POST",
+      credentials: 'include'
+      })
+      this.setState({
+        loggedIn: false
+      })
+    }
+    
+       
   
   render(){
     return (
       <div className="App">
-        <Navigation updateNavState={this.updateNavState} addAdventure={this.addAdventure} adventures={this.state.adventures} loggedIn={this.state.loggedIn} username={this.state.username} handleRegistration={this.handleRegistration} handleLogin={this.handleLogin}/>
+        <Navigation 
+            handleLogout={this.handleLogout} 
+            addAdventure={this.addAdventure} 
+            adventures={this.state.adventures} 
+            loggedIn={this.state.loggedIn} 
+            username={this.state.username} 
+            handleRegistration={this.handleRegistration} 
+            handleLogin={this.handleLogin}/>
         <main>
-          <Route exact path="/" render={(props) => <Home {...props} adventures={this.state.adventures} /> }/>       
+          <Route exact path="/" render={(props) => 
+            <Home {...props} 
+              adventures={this.state.adventures} 
+              username={this.state.username}
+              deleteAdventure={this.deleteAdventure}
+              /> }/>       
+              
           <Route exact path="/adventures" 
-            render={(props) => <AdventuresContainer {...props} currentUser={this.username} adventures={this.state.adventures} addAdventure={this.addAdventure} updateAdventure={this.updateAdventure} deleteAdventure={this.deleteAdventure} loggedIn={this.state.loggedIn} username={this.state.username}/>}
+            render={(props) => <AdventuresContainer 
+              {...props} 
+              currentUser={this.username} 
+              adventures={this.state.adventures} 
+              addAdventure={this.addAdventure} 
+              updateAdventure={this.updateAdventure} 
+              deleteAdventure={this.deleteAdventure} 
+              loggedIn={this.state.loggedIn} 
+              username={this.state.username}/>}
             />
         </main>
+        <footer>
+          <p>do cool shit was produced by <a href="http://www.chrissyeasondesigns.com" target="_blank">Chrissy Eason. </a>Hire her!</p>
+        </footer>
       </div>
     );
 }
