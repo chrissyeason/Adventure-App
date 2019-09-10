@@ -1,3 +1,22 @@
 .AdventuresContainer {
     background-color: white;
 }
+
+.when-where-subhead {
+    display: flex;
+}
+.when-where-subhead p{
+    margin-right: 10px;
+}
+.description {
+    font-size: .75rem;
+}
+.show-modal-header{
+    padding-left: .25rem;
+}
+#show-button .btnd:focus, .btnd:active, .btnd.active, .btnd:focus:active {
+    background-image: none;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }

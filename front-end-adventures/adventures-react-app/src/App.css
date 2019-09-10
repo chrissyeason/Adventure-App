@@ -57,3 +57,9 @@
 .home-photo {
   width: 100%;
 }
+.btnd:focus, .btnd:active, .btnd.active, .btnd:focus:active {
+  background-image: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

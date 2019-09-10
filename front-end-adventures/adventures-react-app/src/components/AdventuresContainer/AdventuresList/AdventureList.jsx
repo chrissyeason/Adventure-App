@@ -17,6 +17,7 @@ function AdventureList(props){
                     <AdventureShow 
                         what={adventure.what}
                         where={adventure.where}
+                        when={adventure.when}
                         description={adventure.description}
                         image={adventure.image}
                         username={adventure.user.username}

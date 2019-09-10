@@ -13,6 +13,10 @@
     border-radius: 2px;
     border: solid #2A9D8F 1px;
 }
-.Button:focus {
+
+.btnd:focus, .btnd:active, .btnd.active, .btnd:focus:active {
+    background-image: none;
+    outline: none;
+    -webkit-box-shadow: none;
     box-shadow: none;
-}
+  }
