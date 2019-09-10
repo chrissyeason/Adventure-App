@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Oswald&display=swap');
+
+.list-container {
+    margin-top: 50px;
+    padding: 50px;
+}
+.adventure-list-images {
+    border: solid white 5px;
+    max-height: 300px;
+}
+li {
+    list-style: none;
+    max-width: 33%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.list-header {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 3vw;
+}
+.list-where {
+    text-transform: uppercase;
+}
+h5 {
+    font-size: 1.5vw;
+}
+.list-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+.modal-image{
+    max-width: 98%;
+}
+#show-button {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+}

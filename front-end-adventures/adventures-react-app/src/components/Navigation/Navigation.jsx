@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Button } from 'reactstrap';
 import AuthGateway from '../AuthGateway/AuthGateway';
 import {Link} from 'react-router-dom';
 import { Route } from 'react-router-dom';
@@ -17,114 +18,49 @@ class Navigation extends Component {
           adventures: []
         }
       }
-logOut = async () =>{
-    
-    
-      const logOut = await fetch('http://localhost:9000/user/logout', {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-        
-    this.setState({
-      loggedIn: false
-      })
-}      
-handleRegistration = async (formData) =>{
-    console.log(formData);
-    console.log("registering");
-    const registerResponse = await fetch('http://localhost:9000/user/register', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    const parsedResponse = await registerResponse.json();
-    console.log(parsedResponse);
-    if(parsedResponse.status.code === 201){
-      console.log('registration successful');
+  componentDidMount(){
+    this.updateNavState();
+    console.log("componentDidMount updateNavState")
+  }
+  updateNavState = () =>{
+    let isLoggedIn = this.props.loggedIn;
+    if(isLoggedIn == true){
       this.setState({
-        loggedIn: true,
-        username: parsedResponse.data.username
+        username:this.props.username,
+        loggedIn: true
       })
-    }
-}
-handleLogin = async (formData) =>{
-    console.log(formData);
-    console.log("registering");
-    const registerResponse = await fetch('http://localhost:9000/user/login', {
-      method: 'POST',
-      body: JSON.stringify(formData),
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    const parsedResponse = await registerResponse.json();
-    console.log(parsedResponse);
-    if(parsedResponse.status.code === 200){
-      console.log('registration successful');
-      this.setState({
-        loggedIn: true,
-        username: parsedResponse.data.username
-      })
-    }
-}
-// addAdventure = async (formData) =>{
-//   console.log("adding adventure");
-//   try{
-//       const newAdventure = await fetch('http://localhost:9000/adventures',{
-//           method: 'POST',
-//           body: JSON.stringify(formData),
-//           credentials: "include",
-//           headers: {
-//               "Content-Type": "application/json"
-//           }
-//       })
-//       const parsedResponse = await newAdventure.json();
-//       console.log(parsedResponse);
-//       if(parsedResponse.status.code === 200){
-//           this.setState({
-//               adventures: [...this.state.adventures, parsedResponse.data]
-//           })
-//       }
-//   }catch(err){
-//       console.log(err)
-//   }
-// }
-toggle =()=> {
-  console.log("renderNewAdventure")
-  this.setState(prevState => ({
-    renderNewAdventure: !prevState.renderNewAdventure
-  }));
-}
+    }  
+  }
+ 
+  
+  // handleLogout = async (e) => {  
+  //   const handleLogout = await fetch('http://localhost:9000/user/logout', {
+  //     method: "GET",
+  //     credentials: "include",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     }
+  //   })
+  //   this.setState({
+  //     loggedIn: false
+  //   })
+  // }      
     
         render(){
             return(
                 <div className="nav-bar">
-                    <h4>DO COOL SHIT</h4>
-                    <div>
-                        <button id="discover"><a href="/adventures">discover</a></button>
-                        {/* <Route path="/add" component={NewAdventure} /> */}
-                        <button onClick={this.toggle}>add</button>
+                    <h4><a href="/" id="nav-logo">DO COOL SHIT</a></h4>
+                    <div className="discover-button">
+                        <button><a href="/adventures" id="discover">discover</a></button>
                         
                     </div>
                     {
-                    this.state.loggedIn ?
-                        <button id="log-out" onClick={this.logOut}>log out</button> :
-                        <AuthGateway handleRegistration={this.handleRegistration} handleLogin={this.handleLogin}/> 
+                    this.props.loggedIn ?
+                        <button id="log-out" onClick={this.handleLogout}>log out</button> :
+                        <AuthGateway handleRegistration={this.props.handleRegistration} handleLogin={this.props.handleLogin}/> 
                     }
-                    {
-                      this.state.renderNewAdventure ?
-                      <NewAdventure displayFromAddButtonClick={true} addAdventure={this.props.addAdventure}/> :
-                      ''
-                    }
-                    {/* <AdventuresContainer adventures={this.state.adventures}/> */}
-
+                    
+                    <NewAdventure addAdventure={this.props.addAdventure}/>
                 </div> 
             )
         }

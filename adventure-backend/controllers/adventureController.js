@@ -57,11 +57,39 @@ router.get('/:id', async (req, res, next) =>{
         res.send(err)
     }
 })
-// edit route -- edit form
-
 // update route
+router.put('/:id', async (req, res)=>{
+    try{
+        const updatedAdventure = await Adventures.findByIdAndUpdate(req.params.id, req.body, {new:true});
+        console.log("request made")
+        res.json({
+            status: {
+                code: 200,
+                message: "success"
+            },
+            data: updatedAdventure
+        })
+    }catch(err){
+        res.send(err)
+    }
+})
 
 // delete route
+router.delete('/:id', async (req, res)=>{
+    try{
+        const deleteAdventure = await Adventures.findByIdAndRemove(req.params.id);
+        console.log("fetch was made")
+        res.json({
+            status: {
+                code: 200,
+                message: 'deleted successfully'
+            },
+            data: deleteAdventure
+        })
+    }catch(err){
+        res.send(err)
+    }
+})
 
 
 module.exports = router;
