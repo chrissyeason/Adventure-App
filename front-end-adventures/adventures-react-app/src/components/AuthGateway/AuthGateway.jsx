@@ -6,8 +6,8 @@ import '../Navigation/navigation.css'
 function AuthGateway(props){
     return(
         <div className="register-nav">
-            <Register handleRegistration={props.handleRegistration}/>
-            <Login handleLogin={props.handleLogin}/>
+            <Register handleRegistration={props.handleRegistration} className="Modal"/>
+            <Login handleLogin={props.handleLogin} className="Modal"/>
         </div>
     )
 }

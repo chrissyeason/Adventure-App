@@ -47,13 +47,13 @@ class NewAdventure extends Component {
             <div className="new-adventure">
                 <Button color="white" onClick={this.toggle}>add</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                <ModalHeader toggle={this.toggle}>Add your adventure</ModalHeader>
+                <ModalHeader toggle={this.toggle}>Add an adventure</ModalHeader>
                 <ModalBody>
                     <form onSubmit={this.handleSubmit}>
-                        <input type="text" name="what" placeholder="what rad thing did you do?" onChange={this.handleChange}/>
+                        <input type="text" name="what" placeholder="what rad shit did you do?" onChange={this.handleChange}/>
                         <input type="text" name="where" placeholder="where'd you go?" onChange={this.handleChange}/>
                         <input type="text" name="when" placeholder="when did you go?" onChange={this.handleChange}/>
-                        <textarea type="text" name="description" placeholder="tell us about it" onChange={this.handleChange}></textarea>
+                        <textarea type="text" name="description" placeholder="tell us about that shit!" onChange={this.handleChange}></textarea>
                         <input type="text" name="image" placeholder="image" onChange={this.handleChange}/>
                         <input type="submit" value="submit" onClick={this.toggle}/>
                     </form>

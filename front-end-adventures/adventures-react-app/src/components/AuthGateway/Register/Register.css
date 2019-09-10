@@ -1,0 +1,18 @@
+.Modal {
+    color: #2A9D8F;
+    width: 300px;
+}
+.Modal input {
+    margin-right: 5px;
+    margin-left:5px;
+    padding-left: 5px;
+}
+.Modal input[type=submit] {
+    background-color: #2A9D8F;
+    color: white;
+    border-radius: 2px;
+    border: solid #2A9D8F 1px;
+}
+.Button:focus {
+    box-shadow: none;
+}

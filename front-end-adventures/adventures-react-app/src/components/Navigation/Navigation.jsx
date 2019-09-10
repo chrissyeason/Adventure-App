@@ -60,7 +60,7 @@ class Navigation extends Component {
                         <AuthGateway handleRegistration={this.props.handleRegistration} handleLogin={this.props.handleLogin}/> 
                     }
                     
-                    <NewAdventure addAdventure={this.props.addAdventure}/>
+                    <NewAdventure className="Modal" addAdventure={this.props.addAdventure}/>
                 </div> 
             )
         }
