@@ -12,7 +12,9 @@ function Home(props){
             <AdventureList 
                 adventures={props.adventures}
                 username={props.username}
-                deleteAdventure={props.deleteAdventure}/>
+                deleteAdventure={props.deleteAdventure}
+                updateAdventure={props.updateAdventure}
+                />
 
         </div>
     )

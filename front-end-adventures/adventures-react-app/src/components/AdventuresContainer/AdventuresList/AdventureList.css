@@ -2,7 +2,7 @@
 
 .list-container {
     margin-top: 50px;
-    padding: 50px;
+    /* padding: 50px; */
 }
 .adventure-list-images {
     border: solid white 5px;
@@ -13,6 +13,7 @@ li {
     max-width: 33%;
     margin-left: 20px;
     margin-right: 20px;
+    padding-bottom: 50px;
 }
 
 .list-header {
@@ -30,7 +31,7 @@ h5 {
 .list-container {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 .modal-image{
     max-width: 98%;

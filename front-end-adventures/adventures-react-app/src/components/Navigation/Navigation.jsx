@@ -32,7 +32,7 @@ class Navigation extends Component {
             return(
                 <div className="nav-bar">
                     <a href="/" id="nav-logo"><img src="do-cool-shit-logo.png" id="logo"/></a>
-
+                    
                     <div className="discover-button">
                         <button><a href="/adventures" id="discover">discover</a></button>
                         
@@ -44,10 +44,16 @@ class Navigation extends Component {
                             handleRegistration={this.props.handleRegistration} 
                             handleLogin={this.props.handleLogin}/> 
                     }
+                    {
+                        this.props.loggedIn ?
+                            <NewAdventure className="Modal" 
+                                addAdventure={this.props.addAdventure}
+                                username={this.props.username}
+                                updateAdventure={this.props.updateAdventure}
+                                deleteAdventure={this.props.deleteAdventure}/> :
+                            ''    
+                    }
                     
-                    <NewAdventure className="Modal" 
-                        addAdventure={this.props.addAdventure}
-                        username={this.props.username}/>
                 </div> 
             )
         }

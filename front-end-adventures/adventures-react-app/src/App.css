@@ -18,7 +18,7 @@
 /* get inspired section */
 .get-inspired{
   display: inline-grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 55% 45%;
   padding-top: 10%;
   max-width: 90%;
   margin-bottom: 10%;
@@ -37,13 +37,15 @@
   font-size: 3em;
 }
 .get-inspired img {
-  max-width: 75%;
+  max-width: 85%;
+  margin-right: 10px;
 }
 .get-inspired button {
   background-color: #2A9D8F;
   display: block;
   text-align: left;
   margin-top: 25px;
+  border-radius: 3px;
 }
 .get-inspired a {
   color: white;
@@ -54,6 +56,7 @@
 .get-inspired a:hover{
   text-decoration: none;
   color: white;
+
 }
 
 .home-photo {
@@ -67,5 +70,11 @@
 }
 footer {
   font-size: .75rem;
-  
+}
+footer a{
+  color:black;
+}
+footer a:hover {
+  color: #2A9D8F;
+  text-decoration: none;
 }

@@ -90,7 +90,7 @@ class App extends Component {
         const parsedResonse = await adventureDeleted.json();
         console.log(parsedResonse)
         if(parsedResonse.status.code === 200){
-          console.log("made it to 200")
+          console.log("delete adventure")
           this.setState({
             adventures: this.state.adventures.filter(function(adventure){
               return adventure._id !== id;
@@ -169,13 +169,18 @@ class App extends Component {
             loggedIn={this.state.loggedIn} 
             username={this.state.username} 
             handleRegistration={this.handleRegistration} 
-            handleLogin={this.handleLogin}/>
+            handleLogin={this.handleLogin}
+            updateAdventure={this.updateAdventure}
+            deleteAdventure={this.deleteAdventure}/>
         <main>
           <Route exact path="/" render={(props) => 
             <Home {...props} 
               adventures={this.state.adventures} 
               username={this.state.username}
               deleteAdventure={this.deleteAdventure}
+              updateAdventure={this.updateAdventure}
+              addAdventure={this.addAdventure} 
+
               /> }/>       
               
           <Route exact path="/adventures" 
@@ -191,7 +196,7 @@ class App extends Component {
             />
         </main>
         <footer>
-          <p>do cool shit was produced by <a href="http://www.chrissyeasondesigns.com" target="_blank">Chrissy Eason. </a>Hire her!</p>
+          <p><i>do cool shit</i> was designed and developed by <a href="http://www.chrissyeasondesigns.com" target="_blank">Chrissy Eason. <strong>Hire her!</strong></a></p>
         </footer>
       </div>
     );

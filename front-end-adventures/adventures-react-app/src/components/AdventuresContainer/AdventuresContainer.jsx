@@ -11,7 +11,6 @@ class AdventuresContainer extends Component {
             adventures: []
         }
         console.log(props)
-
     }
     
     render(){
