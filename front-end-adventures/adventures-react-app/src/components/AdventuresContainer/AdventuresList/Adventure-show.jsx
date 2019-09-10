@@ -23,15 +23,19 @@ class AdventureShow extends Component{
             <div className="show-adventure">
                 <Button id="show-button" color="white" onClick={this.toggle}>{this.props.what}</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                <ModalHeader toggle={this.toggle}>{this.props.what} {this.props.where}</ModalHeader>
+                <ModalHeader id="show-modal-header" toggle={this.toggle}>{this.props.what} {this.props.where}</ModalHeader>
                 <ModalBody>
                     <h1>{this.props.what}</h1>
-                    <p>{this.props.where}</p>
-                    <p>{this.props.when}</p>
-                    <p>{this.props.description}</p>
+                    <div className="when-where-subhead">
+                        <p>{this.props.where}</p>
+                        <p> | </p>
+                        <p>{this.props.when}</p>
+                    </div>
+                    
+                    <p className="description">{this.props.description}</p>
                     <img src={this.props.image} className="modal-image"/>
                     <p>uploaded by: {this.props.username}</p>
-                    <p>{this.props.currentUser}</p>
+                    {/* <p>{this.props.currentUser}</p> */}
                     
                     {
                         this.props.currentUser === this.props.username ?

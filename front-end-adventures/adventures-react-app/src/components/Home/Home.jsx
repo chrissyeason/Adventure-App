@@ -6,10 +6,15 @@ import AdventureList from '../AdventuresContainer/AdventuresList/AdventureList';
 function Home(props){
     return(
         <div>
-            <img src="adventure-background.jpg" alt="man on mountain" className="home-photo"/>
+            <img src="do-cool-shit-home-photo.jpg" alt="man on mountain" className="home-photo"/>
 
             <GetInspired />
-            <AdventureList adventures={props.adventures}/>
+            <AdventureList 
+                adventures={props.adventures}
+                username={props.username}
+                deleteAdventure={props.deleteAdventure}
+                updateAdventure={props.updateAdventure}
+                />
 
         </div>
     )

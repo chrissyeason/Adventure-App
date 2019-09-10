@@ -5,7 +5,7 @@
   font-family: 'Lato', sans-serif;
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -14,10 +14,11 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
+/* get inspired section */
 .get-inspired{
   display: inline-grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 55% 45%;
   padding-top: 10%;
   max-width: 90%;
   margin-bottom: 10%;
@@ -36,13 +37,15 @@
   font-size: 3em;
 }
 .get-inspired img {
-  max-width: 75%;
+  max-width: 85%;
+  margin-right: 10px;
 }
 .get-inspired button {
   background-color: #2A9D8F;
   display: block;
   text-align: left;
   margin-top: 25px;
+  border-radius: 3px;
 }
 .get-inspired a {
   color: white;
@@ -53,7 +56,47 @@
 .get-inspired a:hover{
   text-decoration: none;
   color: white;
+
 }
+
 .home-photo {
   width: 100%;
+}
+.btnd:focus, .btnd:active, .btnd.active, .btnd:focus:active {
+  background-image: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+footer {
+  font-size: .75rem;
+}
+footer a{
+  color:black;
+}
+footer a:hover {
+  color: #2A9D8F;
+  text-decoration: none;
+}
+@media only screen and (max-width: 600px) {
+  .get-inspired {
+    display: inline-block;
+  }
+  #get-inspired-info h2{
+    display: inline-block;
+    padding-right: 0;
+  }
+  #get-inspired-info p{
+    display: inline-block;
+    text-align: center;
+    padding-right: 8%;
+    padding-left: 8%;
+    padding-top: 3%;
+  }
+  #get-inspired-info button{
+    display: inline-block;
+    text-align: center;
+    padding-right: 10%;
+    padding-left: 10%;
+  }
 }

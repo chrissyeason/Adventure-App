@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+// import './Login.css';
+// import '../Register/Register.css';
 
 class Login extends Component {
     constructor(props){

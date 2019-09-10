@@ -2,17 +2,18 @@
 
 .list-container {
     margin-top: 50px;
-    padding: 50px;
+    /* padding: 50px; */
 }
 .adventure-list-images {
     border: solid white 5px;
-    max-height: 300px;
+    max-height: 270px;
 }
 li {
     list-style: none;
     max-width: 33%;
     margin-left: 20px;
     margin-right: 20px;
+    padding-bottom: 50px;
 }
 
 .list-header {
@@ -30,7 +31,7 @@ h5 {
 .list-container {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 .modal-image{
     max-width: 98%;
@@ -38,4 +39,23 @@ h5 {
 #show-button {
     font-family: 'Oswald', sans-serif;
     font-size: 32px;
+}
+@media only screen and (max-width: 600px) {
+    .list-container {
+        display: block;
+    }
+    .adventure-list-images {
+        max-width: 350px;
+    }
+    ul.list-container {
+        padding: 0;
+        text-align: center;
+    }
+    .list-container li{
+        display: block;
+        padding-left: 3%;
+    }
+    #show-button {
+        display: inline-block;
+    }
 }

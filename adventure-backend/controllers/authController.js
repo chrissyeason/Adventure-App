@@ -34,7 +34,8 @@ router.post('/login', async (req, res) =>{
                     data: foundUser
                   })
             }else{
-                // send message backt ot client that the username or password is incorrect
+                // send message back to client that the username or password is incorrect
+                console.log("reached else statement for login route")
                 res.session.message = 'Username or Password incorrect';
                 res.json({
                     status: {
@@ -78,15 +79,15 @@ router.post('/register', async (req, res) =>{
     }
 });
 // logout route
-router.get('/logout', (req, res) =>{
-    console.log("log out works")
-    req.session.destroy((err) =>{
-        console.log(req.session)
-        if(err){
-            res.send(err);
-        }else{
-            res.redirect('/');
-        }
+router.post('/logout', (req, res) => {
+    console.log('logout successful')
+    req.session.destroy((err) => {
+      if(err){
+        res.send(err);
+      } else {
+        res.redirect('/');// back to the homepage
+      }
     })
-})
+  
+  })
 module.exports = router;

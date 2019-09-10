@@ -90,7 +90,7 @@ class App extends Component {
         const parsedResonse = await adventureDeleted.json();
         console.log(parsedResonse)
         if(parsedResonse.status.code === 200){
-          console.log("made it to 200")
+          console.log("delete adventure")
           this.setState({
             adventures: this.state.adventures.filter(function(adventure){
               return adventure._id !== id;
@@ -142,19 +142,62 @@ class App extends Component {
         loggedIn: true,
         username: parsedResponse.data.username
       })
-    }
+    }else{
+      alert(parsedResponse.status.message);
+    }    
   }
+  
+  handleLogout = async (e) => {  
+    const handleLogout = await fetch('http://localhost:9000/user/logout', {
+      method: "POST",
+      credentials: 'include'
+      })
+      this.setState({
+        loggedIn: false
+      })
+    }
+    
+       
   
   render(){
     return (
       <div className="App">
-        <Navigation updateNavState={this.updateNavState} addAdventure={this.addAdventure} adventures={this.state.adventures} loggedIn={this.state.loggedIn} username={this.state.username} handleRegistration={this.handleRegistration} handleLogin={this.handleLogin}/>
+        <Navigation 
+            handleLogout={this.handleLogout} 
+            addAdventure={this.addAdventure} 
+            adventures={this.state.adventures} 
+            loggedIn={this.state.loggedIn} 
+            username={this.state.username} 
+            handleRegistration={this.handleRegistration} 
+            handleLogin={this.handleLogin}
+            updateAdventure={this.updateAdventure}
+            deleteAdventure={this.deleteAdventure}/>
         <main>
-          <Route exact path="/" render={(props) => <Home {...props} adventures={this.state.adventures} /> }/>       
+          <Route exact path="/" render={(props) => 
+            <Home {...props} 
+              adventures={this.state.adventures} 
+              username={this.state.username}
+              deleteAdventure={this.deleteAdventure}
+              updateAdventure={this.updateAdventure}
+              addAdventure={this.addAdventure} 
+
+              /> }/>       
+              
           <Route exact path="/adventures" 
-            render={(props) => <AdventuresContainer {...props} currentUser={this.username} adventures={this.state.adventures} addAdventure={this.addAdventure} updateAdventure={this.updateAdventure} deleteAdventure={this.deleteAdventure} loggedIn={this.state.loggedIn} username={this.state.username}/>}
+            render={(props) => <AdventuresContainer 
+              {...props} 
+              currentUser={this.username} 
+              adventures={this.state.adventures} 
+              addAdventure={this.addAdventure} 
+              updateAdventure={this.updateAdventure} 
+              deleteAdventure={this.deleteAdventure} 
+              loggedIn={this.state.loggedIn} 
+              username={this.state.username}/>}
             />
         </main>
+        <footer>
+          <p><i>do cool shit</i> was designed and developed by <a href="http://www.chrissyeasondesigns.com" target="_blank">Chrissy Eason. <strong>Hire her!</strong></a></p>
+        </footer>
       </div>
     );
 }

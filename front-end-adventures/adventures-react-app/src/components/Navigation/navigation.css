@@ -13,19 +13,19 @@
     color: black;
     border-bottom: solid #efefef 1px;
 }
-#nav-logo {
-    font-size: 2rem;
-    font-family: 'Oswald', sans-serif;
-    margin-bottom: 15px;
+#logo {
+    max-width: 175px;
+    margin-left: 10%;
+    margin-top: -10px;
 }
+/* discover button links to adventure list */
 .discover-button {
-    margin-left: 60px;
     padding-left: 15px;
     padding-right: 15px;
     border-top: none;
     border-right: none;
     border-left: none; 
-    font-size: 14px;
+    font-size: 16px;
     padding-top: 19px;
 }
 .discover-button button {
@@ -53,23 +53,25 @@
     margin-top: 10px;
     font-family: 'Oswald', sans-serif;
 }
+/* add an adventure button links to new adventure component */
 .new-adventure Button {
-    font-size: 14px;
+    font-size: 16px;
     padding-top: 19px;
 }
 .new-adventure {
     padding-bottom: 11px;
     font-family: 'Lato', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
 }
 .new-adventure:hover {
     border-bottom: solid #E76F51 4px;
 }
+/* register and login modals */
 .register-nav {
     display: flex;
 }
 .register-nav Button {
-    font-size: 14px;
+    font-size: 16px;
     padding-top: 19px;
 } 
 .Register {
@@ -92,12 +94,73 @@
 .Register:hover {
     border-bottom: solid #E76F51 4px;
 }
+/* logout button only visible when user is logged in */
 #log-out {
     position: absolute;
     right: 11%;
     font-family: 'Lato', sans-serif;
     font-size: 14px; 
+    border: none;
+    font-size: 16px;
+    padding-top: 19px;
+    padding-bottom: 17px;
 }
-.btn:focus {
+#log-out:hover {
+    border-bottom: solid #E76F51 4px;
+}
+.Modal button:focus {
     box-shadow: none;
+}
+@media only screen and (max-width: 600px) {
+    .nav-bar {
+        display: block;
+        text-align: center;
+    }
+    #logo {
+        position: absolute;
+        max-width: 175px;
+        margin-left: 0;
+        left: -14px;
+    }
+    .discover-button {
+        position: relative;
+        left: 100px;
+        top: 20px;
+        background-color: white;
+        padding: 0;
+        width: 30px;
+        font-size: .9rem;
+
+    }
+    .discover-button button {
+        background-color: white;
+    }
+    .Login {
+        position: relative;
+        left: 148px;
+        bottom: 23px;
+        padding-left: 0;
+    } 
+    .Register {
+        position: relative;
+        left: 278px;
+        bottom: 23px;
+    }
+    .register-nav Button {
+        font-size: .9rem;
+    } 
+    #log-out {
+        top: 17px;
+        position: absolute;
+        font-size: .9rem;
+        border: white;
+        background-color: white;
+        right: 38px;
+    }
+    .new-adventure button {
+        position: absolute;
+        top: 16px;
+        font-size: .9rem;
+        left: 203px;
+    }
 }
