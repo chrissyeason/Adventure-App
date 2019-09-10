@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Button } from 'reactstrap';
 import AuthGateway from '../AuthGateway/AuthGateway';
 import {Link} from 'react-router-dom';
 import { Route } from 'react-router-dom';
@@ -48,10 +49,9 @@ class Navigation extends Component {
         render(){
             return(
                 <div className="nav-bar">
-                    <h4><a href="/">DO COOL SHIT</a></h4>
-                    <div>
-                        <button id="discover"><a href="/adventures">discover</a></button>
-                        {/* <button onClick={this.toggle}>add</button> */}
+                    <h4><a href="/" id="nav-logo">DO COOL SHIT</a></h4>
+                    <div className="discover-button">
+                        <button><a href="/adventures" id="discover">discover</a></button>
                         
                     </div>
                     {

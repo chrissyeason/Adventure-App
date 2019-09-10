@@ -21,7 +21,7 @@ class AdventureShow extends Component{
     render(){
       return(       
             <div className="show-adventure">
-                <Button id="addButton" color="white" onClick={this.toggle}>{this.props.what}</Button>
+                <Button id="show-button" color="white" onClick={this.toggle}>{this.props.what}</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalHeader toggle={this.toggle}>{this.props.what} {this.props.where}</ModalHeader>
                 <ModalBody>

@@ -17,8 +17,8 @@ class AdventuresContainer extends Component {
     render(){
         return(
             <div className="AdventureContainer">
-                <h1>this is adventure component</h1>
-                <NewAdventure addAdventure={this.props.addAdventure}/>
+                
+                {/* <NewAdventure addAdventure={this.props.addAdventure}/> */}
                 <AdventureList currentUser={this.props.username} adventures={this.props.adventures} updateAdventure={this.props.updateAdventure} deleteAdventure={this.props.deleteAdventure} loggedIn={this.props.loggedIn} username={this.props.username}/>
 
             </div>

@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Oswald&display=swap');
 
+.list-container {
+    margin-top: 50px;
+    padding: 50px;
+}
 .adventure-list-images {
-    /* max-width: 75%; */
+    border: solid white 5px;
     max-height: 300px;
-    margin-left:15px;
-    /* border-radius: 10px; */
 }
 li {
     list-style: none;
     max-width: 33%;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .list-header {
@@ -25,8 +29,13 @@ h5 {
 }
 .list-container {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
 }
 .modal-image{
     max-width: 98%;
+}
+#show-button {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
 }
