@@ -6,6 +6,7 @@ import AdventureList from './components/AdventuresContainer/AdventuresList/Adven
 import NewAdventure from './components/AdventuresContainer/NewAdventure/NewAdventure';
 import Navigation from './components/Navigation/Navigation';
 import Home from './components/Home/Home';
+import Chat from './components/Chat/Chat';
 
 class App extends Component {
   constructor(){
@@ -194,6 +195,7 @@ class App extends Component {
               loggedIn={this.state.loggedIn} 
               username={this.state.username}/>}
             />
+            <Chat />
         </main>
         <footer>
           <p><i>do cool shit</i> was designed and developed by <a href="http://www.chrissyeasondesigns.com" target="_blank">Chrissy Eason. <strong>Hire her!</strong></a></p>

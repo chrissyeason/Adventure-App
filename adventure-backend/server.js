@@ -6,14 +6,11 @@ const mongoose          = require('mongoose');
 const bodyParser        = require('body-parser');
 const cors              = require('cors');
 const session           = require('express-session');
-const io                = require('socket.io');
+const socket            = require('socket.io');
+
 
 const PORT = process.env.PORT
 const mongoURI = process.env.MONGODB_URI
-
-io.on('connection', function(socket){
-    console.log('a user connected');
-  });
 
 // CORS allows requrest to come in from React
 app.use(cors({
@@ -44,6 +41,16 @@ const authController = require('./controllers/authController');
 app.use('/adventures', adventureController);
 app.use('/user', authController);
 
-app.listen(9000, (req, res) => {
+server = app.listen(9000, function() {
     console.log('listening on port 9000');
 })
+
+io = socket(server);
+
+io.on('connection', (socket) => {
+    console.log(socket.id);
+
+    socket.on('SEND_MESSAGE', function(data){
+        io.emit('RECEIVE_MESSAGE', data);
+    })
+  });
