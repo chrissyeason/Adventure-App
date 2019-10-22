@@ -1,12 +1,12 @@
 import React from 'react';
 import GetInspired from '../Get-Inspired/Get-Inspired';
 import AdventureList from '../AdventuresContainer/AdventuresList/AdventureList';
-
+import homePhoto from './do-cool-shit-home-photo.jpg';
 
 function Home(props){
     return(
         <div>
-            <img src="do-cool-shit-home-photo.jpg" alt="man on mountain" className="home-photo"/>
+            <img src={homePhoto} alt="man on mountain" className="home-photo"/>
 
             <GetInspired />
             <AdventureList 

@@ -6,9 +6,14 @@ const mongoose          = require('mongoose');
 const bodyParser        = require('body-parser');
 const cors              = require('cors');
 const session           = require('express-session');
+const io                = require('socket.io');
 
 const PORT = process.env.PORT
 const mongoURI = process.env.MONGODB_URI
+
+io.on('connection', function(socket){
+    console.log('a user connected');
+  });
 
 // CORS allows requrest to come in from React
 app.use(cors({

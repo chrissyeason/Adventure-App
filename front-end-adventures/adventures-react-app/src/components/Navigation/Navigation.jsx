@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import { Button } from 'reactstrap';
 import AuthGateway from '../AuthGateway/AuthGateway';
-import {Link} from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import NewAdventure from '../AdventuresContainer/NewAdventure/NewAdventure';
-import AdventuresList from '../AdventuresContainer/AdventuresList/AdventureList';
 import './navigation.css';
+import logo from './do-cool-shit-logo.png';
 import AdventuresContainer from '../AdventuresContainer/AdventuresContainer';
+import Home from '../Home/Home';
 
 class Navigation extends Component {
     constructor(props){
@@ -18,23 +17,29 @@ class Navigation extends Component {
           adventures: []
         }
       }
+    Main = () => (
+    <div>
+        <Route exact path="/" component={Home} />
+        <Route path="/adventures" component={AdventuresContainer} />
+    </div>
+    );
   
- startLogOut = () => {
-  this.setState({
-    loggedIn: false
-  })
-  this.props.handleLogout(this.state)
- }
+    startLogOut = () => {
+    this.setState({
+        loggedIn: false
+    })
+    this.props.handleLogout(this.state)
+    }
   
    
     
         render(){
             return(
                 <div className="nav-bar">
-                    <a href="/" id="nav-logo"><img src="do-cool-shit-logo.png" id="logo"/></a>
+                    <Link to="/" id="nav-logo"><img src={logo} id="logo"/></Link>
                     
                     <div className="discover-button">
-                        <button><a href="/adventures" id="discover">discover</a></button>
+                        <button><Link to="/adventures" id="discover">discover</Link></button>
                         
                     </div>
                     {
