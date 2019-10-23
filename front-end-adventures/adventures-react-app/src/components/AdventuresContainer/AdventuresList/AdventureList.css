@@ -40,6 +40,9 @@ h5 {
     font-family: 'Oswald', sans-serif;
     font-size: 32px;
 }
+#show-button img {
+    max-height: 270px;
+}
 @media only screen and (max-width: 600px) {
     .list-container {
         display: block;

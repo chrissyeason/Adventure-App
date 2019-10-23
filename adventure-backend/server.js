@@ -7,7 +7,7 @@ const bodyParser        = require('body-parser');
 const cors              = require('cors');
 const session           = require('express-session');
 const socket            = require('socket.io');
-
+const Messages          = require('./models/messages');
 
 const PORT = process.env.PORT
 const mongoURI = process.env.MONGODB_URI
@@ -34,12 +34,14 @@ app.use((req, res, next)=>{
 })
 
 // controllers after middleware
-const adventureController = require('./controllers/adventureController')
+const adventureController = require('./controllers/adventureController');
 const authController = require('./controllers/authController');
+const chatController = require('./controllers/chatController');
 
 // controllers routes
 app.use('/adventures', adventureController);
 app.use('/user', authController);
+app.use('/chat', chatController);
 
 server = app.listen(9000, function() {
     console.log('listening on port 9000');
@@ -51,6 +53,14 @@ io.on('connection', (socket) => {
     console.log(socket.id);
 
     socket.on('SEND_MESSAGE', function(data){
+        let newMessage = {
+            username: data.username,
+            message: data.message,
+            room: data.room
+        }
+        Messages.create(newMessage, (error, createdMessage) =>{
+            console.log(newMessage);
+        });
         io.emit('RECEIVE_MESSAGE', data);
     })
   });

@@ -21,7 +21,7 @@ class AdventureShow extends Component{
     render(){
       return(       
             <div className="show-adventure">
-                <Button id="show-button" color="white" onClick={this.toggle}>{this.props.what}</Button>
+                <Button id="show-button" color="white" onClick={this.toggle}><img src={this.props.image}/><h2>{this.props.what}</h2></Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalHeader id="show-modal-header" toggle={this.toggle}>{this.props.what} {this.props.where}</ModalHeader>
                 <ModalBody>
@@ -35,7 +35,7 @@ class AdventureShow extends Component{
                     <p className="description">{this.props.description}</p>
                     <img src={this.props.image} className="modal-image"/>
                     <p>uploaded by: {this.props.username}</p>
-                    {/* <p>{this.props.currentUser}</p> */}
+                    <ModalFooter>
                     
                     {
                         this.props.currentUser === this.props.username ?
@@ -52,7 +52,8 @@ class AdventureShow extends Component{
                             id={this.props._id}
                             /> :
                             ''
-                    }             
+                    }      
+                    </ModalFooter>       
                 </ModalBody>
                 </Modal>
             </div>        

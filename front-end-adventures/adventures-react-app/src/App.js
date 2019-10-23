@@ -195,7 +195,13 @@ class App extends Component {
               loggedIn={this.state.loggedIn} 
               username={this.state.username}/>}
             />
-            <Chat />
+            {
+              this.state.loggedIn ?
+              <Chat 
+                username={this.state.username}
+                loggedIn={this.state.loggedIn}/> :
+                ''
+            }
         </main>
         <footer>
           <p><i>do cool shit</i> was designed and developed by <a href="http://www.chrissyeasondesigns.com" target="_blank">Chrissy Eason. <strong>Hire her!</strong></a></p>

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import io from 'socket.io-client';
+import './Chat.css';
 
 class Chat extends Component {
     constructor(props){
@@ -26,7 +27,7 @@ class Chat extends Component {
         this.sendMessage = (e) => {
             e.preventDefault();
             this.socket.emit('SEND_MESSAGE', {
-                author: this.state.username,
+                username: this.props.username,
                 message: this.state.message
             });
             this.setState({message: ''});
@@ -38,24 +39,27 @@ class Chat extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-4">
-                        <div className="card">
+                        <div className="Card">
                             <div className="card-body">
-                                <div className="card-title">Global Chat</div>
+                                <div className="card-title">Cool Cat's Chat</div><button data-toggle="collapse" data-target=".collapse">show</button>
                                 <hr/>
-                                <div className="messages">
-                                    {this.state.messages.map(message => {
-                                        return(
-                                            <div key={message}>{message.author}: {message.message}</div>
-                                        )
-                                    })}
+                                <div className="collapse">
+                                    <div className="messages">
+                                        {this.state.messages.map(function(message, i){
+                                            const key = `message-${i}`;
+                                            return(
+                                                <div key={key}>{message.username} : {message.message}</div>
+                                            )
+                                        })}
+                                    </div>
+                                
+                                    <div className="card-footer">
+                        
+                                        <input type="text" placeholder="Message" value={this.state.message} onChange={e => this.setState({message: e.target.value})} className="form-control"/>
+                                        <br/>
+                                        <button onClick={this.sendMessage} className="send-button">Send</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="card-footer">
-                                <input type="text" placeholder="Username" value={this.state.username} onChange={e => this.setState({username: e.target.value})} className="form-control"/>
-                                <br/>
-                                <input type="text" placeholder="Message" value={this.state.message} onChange={e => this.setState({message: e.target.value})} className="form-control"/>
-                                <br/>
-                                <button onClick={this.sendMessage} className="btn btn-primary form-control">Send</button>
                             </div>
                         </div>
                     </div>
