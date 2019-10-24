@@ -10,12 +10,14 @@ class Chat extends Component {
             message: '',
             messages: []
         };
+        // socket listening
         this.socket = io('localhost:9000');
 
         this.socket.on('RECEIVE_MESSAGE', function(data){
             addMessage(data);
         });
         
+        // catches the emit from the server and adds it to the messages array
         const addMessage = (data) => {
             console.log(data);
             this.setState({
@@ -23,7 +25,8 @@ class Chat extends Component {
             });
             console.log(this.state.messages);
         };
-
+    
+        // sends the message to the server every time you click 'send'
         this.sendMessage = (e) => {
             e.preventDefault();
             this.socket.emit('SEND_MESSAGE', {
@@ -31,8 +34,48 @@ class Chat extends Component {
                 message: this.state.message
             });
             this.setState({message: ''});
+            postMessage({
+                username: this.props.username,
+                message: this.state.message,
+            })
+        }
+         const postMessage = async (data) => {
+            try{
+                const newMessage = await fetch('http://localhost:9000/chat', {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    credentials: 'include',
+                    headers: {
+                        "Content-Type" : "application/json"
+                    }
+                })
+                const parsedResponse = await newMessage.json();
+                console.log(parsedResponse, 'this is response from message req');
+            }catch(err){
+                console.log(err)
+            }
         }
     }
+    componentDidMount(){
+        this.getMessages();
+        console.log("messages container componentDidMount")
+    }
+  // get route makes a fetch request
+    getMessages = async () => {
+          try{
+              const messages = await fetch('http://localhost:9000/chat');
+              const parsedResponse = await messages.json();
+              if(parsedResponse.status.code === 200){
+                  console.log("this is parsedResponse", parsedResponse)
+                  this.setState({
+                      messages: parsedResponse.data
+                  })
+                  console.log(parsedResponse.data)
+              }
+          }catch(err){
+              console.log(err)
+          }
+      }
     
     render(){
         return(

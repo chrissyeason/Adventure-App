@@ -19,4 +19,25 @@ router.get('/', async (req, res) =>{
     }
 });
 
+// create route
+router.post('/', async (req, res, next) =>{
+    try {
+        console.log(req.body, 'this is req.body');
+        req.body.user = req.session.userId;
+        const newMessages = await Messages.create(req.body);
+        res.json({
+            status: {
+                code: 200,
+                message: "Messages successfully created"
+            },
+            data: newMessages
+        });
+        
+        console.log(newMessages);
+    }catch(err){
+        console.log(err);
+        res.send(err);
+    }
+})
+
 module.exports = router;

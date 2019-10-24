@@ -6,6 +6,7 @@ import './navigation.css';
 import logo from './do-cool-shit-logo.png';
 import AdventuresContainer from '../AdventuresContainer/AdventuresContainer';
 import Home from '../Home/Home';
+import Chat from '../Chat/Chat';
 
 class Navigation extends Component {
     constructor(props){
@@ -21,6 +22,7 @@ class Navigation extends Component {
     <div>
         <Route exact path="/" component={Home} />
         <Route path="/adventures" component={AdventuresContainer} />
+        <Route path="/chat" component={Chat}/>
     </div>
     );
   
@@ -57,6 +59,16 @@ class Navigation extends Component {
                                 updateAdventure={this.props.updateAdventure}
                                 deleteAdventure={this.props.deleteAdventure}/> :
                             ''    
+                    }
+
+                    {
+                        this.props.loggedIn ?
+                        <button><Link to="/chat">
+                            <Chat 
+                                username={this.props.username}
+                                loggedIn={this.props.loggedIn}/>chat</Link></button> :
+                                ''
+                                
                     }
                     
                 </div> 

@@ -6,7 +6,6 @@ import AdventureList from './components/AdventuresContainer/AdventuresList/Adven
 import NewAdventure from './components/AdventuresContainer/NewAdventure/NewAdventure';
 import Navigation from './components/Navigation/Navigation';
 import Home from './components/Home/Home';
-import Chat from './components/Chat/Chat';
 
 class App extends Component {
   constructor(){
@@ -25,13 +24,13 @@ class App extends Component {
   getAdventures = async () => {
         try{
             const adventures = await fetch('http://localhost:9000/adventures');
-            const parsedResonse = await adventures.json();
-            if(parsedResonse.status.code === 200){
-                console.log("this is parsedResponse", parsedResonse)
+            const parsedResponse = await adventures.json();
+            if(parsedResponse.status.code === 200){
+                console.log("this is parsedResponse", parsedResponse)
                 this.setState({
-                    adventures: parsedResonse.data
+                    adventures: parsedResponse.data
                 })
-                console.log(parsedResonse.data)
+                console.log(parsedResponse.data)
             }
         }catch(err){
             console.log(err)
@@ -195,13 +194,7 @@ class App extends Component {
               loggedIn={this.state.loggedIn} 
               username={this.state.username}/>}
             />
-            {
-              this.state.loggedIn ?
-              <Chat 
-                username={this.state.username}
-                loggedIn={this.state.loggedIn}/> :
-                ''
-            }
+            
         </main>
         <footer>
           <p><i>do cool shit</i> was designed and developed by <a href="http://www.chrissyeasondesigns.com" target="_blank">Chrissy Eason. <strong>Hire her!</strong></a></p>
