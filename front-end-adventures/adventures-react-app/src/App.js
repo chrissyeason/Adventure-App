@@ -183,7 +183,7 @@ class App extends Component {
 
               /> }/>       
               
-          <Route exact path="/adventures" 
+          {/* <Route exact path="/adventures" 
             render={(props) => <AdventuresContainer 
               {...props} 
               currentUser={this.username} 
@@ -193,7 +193,7 @@ class App extends Component {
               deleteAdventure={this.deleteAdventure} 
               loggedIn={this.state.loggedIn} 
               username={this.state.username}/>}
-            />
+            /> */}
             
         </main>
         <footer>

@@ -19,12 +19,14 @@ class Chat extends Component {
         
         // catches the emit from the server and adds it to the messages array
         const addMessage = (data) => {
+            if(data.message !== ''){
             console.log(data);
             this.setState({
                 messages: [...this.state.messages, data]
             });
             console.log(this.state.messages);
-        };
+            };
+        }
     
         // sends the message to the server every time you click 'send'
         this.sendMessage = (e) => {
@@ -80,34 +82,23 @@ class Chat extends Component {
     render(){
         return(
             <div className="container">
-                <div className="row">
-                    <div className="col-4">
-                        <div className="Card">
-                            <div className="card-body">
-                                <div className="card-title">Cool Cat's Chat</div><button data-toggle="collapse" data-target=".collapse">show</button>
-                                <hr/>
-                                <div className="collapse">
-                                    <div className="messages">
-                                        {this.state.messages.map(function(message, i){
-                                            const key = `message-${i}`;
-                                            return(
-                                                <div key={key}>{message.username} : {message.message}</div>
-                                            )
-                                        })}
-                                    </div>
-                                
-                                    <div className="card-footer">
-                        
-                                        <input type="text" placeholder="Message" value={this.state.message} onChange={e => this.setState({message: e.target.value})} className="form-control"/>
-                                        <br/>
-                                        <button onClick={this.sendMessage} className="send-button">Send</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                
+                    <div className="messages">
+                        {this.state.messages.map(function(message, i){
+                            const key = `message-${i}`;
+                            return(
+                                <div key={key}>{message.username} : {message.message}</div>
+                            )
+                        })}
                     </div>
-                </div>
-            </div>
+                
+                    <div className="chat-footer">
+                        <hr/>
+                        <input type="text" placeholder="Message" value={this.state.message} onChange={e => this.setState({message: e.target.value})} className="form-control" required/>
+                        <br/>
+                        <button onClick={this.sendMessage} className="send-button">Send</button>
+                    </div>
+                </div>                        
         )
     }
 }

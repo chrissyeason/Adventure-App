@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const messageSchema = Schema({
     username: String,
-    message: String,
+    message: {type: String, required: true},
     room: String
 }, {timestamps: true});
 
