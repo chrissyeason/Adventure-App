@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const messageSchema = Schema({
-    username: String,
+    user: String,
     message: {type: String, required: true},
     room: String
 }, {timestamps: true});

@@ -56,34 +56,21 @@ class Navigation extends Component {
 
                             {
                                 this.props.loggedIn ?
-                                <button><Link to="/chat">
-                                    <Chat 
-                                        username={this.props.username}
-                                        loggedIn={this.props.loggedIn}/>chat</Link></button> :
-                                        ''
-                                        
+                                    <button><Link to="/chat">chat</Link></button> :
+                                    ''                                      
                             }
+                            
                             
                         </nav> 
                         <div>
-                            {/* <Route 
-                                exact path="/" 
-                                component={Home} /> */}
-                            <Route 
-                                exact path="/adventures" 
-                                render={(props) => <AdventuresContainer 
-                                    {...props} 
-                                    currentUser={this.props.username} 
-                                    adventures={this.props.adventures} 
-                                    addAdventure={this.props.addAdventure} 
-                                    updateAdventure={this.props.updateAdventure} 
-                                    deleteAdventure={this.props.deleteAdventure} 
-                                    loggedIn={this.props.loggedIn} 
-                                    username={this.props.username}/>}
-                                    />
+                        
                             <Route 
                                 exact path="/chat" 
-                                component={Chat}/>
+                                render={(props) => <Chat
+                                {...props}
+                                username={this.props.username}
+                                loggedIn={this.props.loggedIn}/>}
+                                />
                         </div>
                     </div>
                 
