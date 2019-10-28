@@ -8,7 +8,7 @@ class Chat extends Component {
     constructor(props){
         super(props);
         this.state = {
-            username: '',
+            user: this.props.username,
             message: '',
             room: '',
             messages: []
@@ -18,6 +18,7 @@ class Chat extends Component {
 
     this.socket.on('RECEIVE_MESSAGE', function(data){
         addMessage(data);
+        console.log(data, "this is data from socket.on function")
     });
     
     // catches the emit from the server and adds it to the messages array
@@ -27,16 +28,18 @@ class Chat extends Component {
         this.setState({
             messages: [...this.state.messages, data]
         });
-        console.log(this.state.messages);
+        console.log(this.state.messages, "this is add message function");
         };
     }
 
     // sends the message to the server every time you click 'send'
     this.sendMessage = (e) => {
         e.preventDefault();
+        console.log("this si send message")
         this.socket.emit('SEND_MESSAGE', {
-            username: this.props.username,
-            message: this.state.message
+            user: this.props.username,
+            message: this.state.message,
+            room: this.state.room,
         });
         this.setState({message: ''});
         postMessage({
@@ -45,7 +48,9 @@ class Chat extends Component {
             room: this.state.room,
         })
     }
-     const postMessage = async (data, room) => {
+     const postMessage = async (data) => {
+        let room = data.room
+        console.log(data, "this is data from post req" )
         try{
             const newMessage = await fetch(`http://localhost:9000/chat/${room}`, {
                 method: 'POST',
@@ -68,7 +73,9 @@ class Chat extends Component {
 // }
 
 // get route makes a fetch request
-getMessages = async (room) => {
+getMessages = async () => {
+    let room = this.state.room
+    console.log(room)
       try{
           const messages = await fetch(`http://localhost:9000/chat/${room}`);
           const parsedResponse = await messages.json();

@@ -4,9 +4,11 @@ const Messages = require('../models/messages');
 
 // get route
 router.get('/:room', async (req, res) =>{
+    let room = req.params.room
     try {
-        const allMessages = await Messages.find(req.param.room).populate('user', 'rooms');
+        const allMessages = await Messages.find({'room': room}).populate('user', 'room');
         // this is the response to react
+        console.log(req.params.room, 'this is req.params.room')
         res.json({
             status: {
                 code: 200,
