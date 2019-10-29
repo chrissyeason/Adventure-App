@@ -53,14 +53,14 @@ io.on('connection', (socket) => {
     console.log(socket.id);
 
     socket.on('SEND_MESSAGE', function(data){
-        let newMessage = {
-            username: data.username,
-            message: data.message,
-            room: data.room
-        }
-        Messages.create(newMessage, (error, createdMessage) =>{
-            console.log(newMessage);
-        });
+        // let newMessage = {
+        //     user: data.user,
+        //     message: data.message,
+        //     room: data.room
+        // }
+        // Messages.create(newMessage, (error, createdMessage) =>{
+        //     console.log(newMessage);
+        // });
         io.emit('RECEIVE_MESSAGE', data);
     })
   });

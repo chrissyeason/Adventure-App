@@ -6,7 +6,7 @@ class Register extends Component {
     constructor(props){
         super(props);
         this.state = {
-            username: null,
+            user: null,
             password: null,
             modal: false
         }
@@ -27,7 +27,10 @@ class Register extends Component {
         e.preventDefault();
         // register function coming in from parent
         console.log('submitted the form')
-        this.props.handleRegistration(this.state);
+        this.props.handleRegistration({
+          user: this.state.user,
+          password: this.state.password
+        });
     }
 
     
@@ -39,7 +42,7 @@ class Register extends Component {
                 <ModalHeader toggle={this.toggle}>Register</ModalHeader>
                 <ModalBody>
                   <form onSubmit={this.handleSubmit}>
-                      <input type="text" name="username" placeholder="username" onChange={this.handleChange}/>
+                      <input type="text" name="user" placeholder="user" onChange={this.handleChange}/>
                       <input type="password" name="password" placeholder="password" onChange={this.handleChange}/>
                       <input type="submit" value="submit" onClick={this.toggle}/>
                   </form>

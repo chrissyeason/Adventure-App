@@ -11,7 +11,7 @@ function Home(props){
             <GetInspired />
             <AdventureList 
                 adventures={props.adventures}
-                username={props.username}
+                user={props.user}
                 deleteAdventure={props.deleteAdventure}
                 updateAdventure={props.updateAdventure}
                 />

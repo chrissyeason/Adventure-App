@@ -16,7 +16,7 @@ router.get('/', async (req, res) =>{
 router.post('/login', async (req, res) =>{
     // first query the databse to see if the user exists
     try{
-        const foundUser = await User.findOne({username: req.body.username});
+        const foundUser = await User.findOne({user: req.body.user});
         console.log(foundUser, 'foundUser');
         // If the user exists we'll use bcrypt to see if their password is valid
         if(foundUser){
@@ -24,7 +24,7 @@ router.post('/login', async (req, res) =>{
             if(bcrypt.compareSync(req.body.password, foundUser.password)) {
                 // if valid, we'll set hte session
                 req.session.userId = foundUser._id;
-                req.session.username = foundUser.username;
+                req.session.user = foundUser.user;
                 req.session.logged = true;
 
                 res.json({
@@ -34,9 +34,9 @@ router.post('/login', async (req, res) =>{
                     data: foundUser
                   })
             }else{
-                // send message back to client that the username or password is incorrect
+                // send message back to client that the user or password is incorrect
                 console.log("reached else statement for login route")
-                res.session.message = 'Username or Password incorrect';
+                res.session.message = 'user or Password incorrect';
                 res.json({
                     status: {
                     code: 500,
@@ -65,7 +65,7 @@ router.post('/register', async (req, res) =>{
 
         // set session info
         req.session.userId = createdUser._id;
-        req.session.username = createdUser.username;
+        req.session.user = createdUser.user;
         req.session.logged = true;
         
         res.json({

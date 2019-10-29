@@ -4,9 +4,9 @@ const Messages = require('../models/messages');
 
 // get route
 router.get('/:room', async (req, res) =>{
-    let room = req.params.room
+    // let room = req.params.room
     try {
-        const allMessages = await Messages.find({'room': room}).populate('user', 'room');
+        const allMessages = await Messages.find({room: req.params.room}).populate('user');
         // this is the response to react
         console.log(req.params.room, 'this is req.params.room')
         res.json({
@@ -22,7 +22,7 @@ router.get('/:room', async (req, res) =>{
 });
 
 // create route
-router.post('/:room', async (req, res, next) =>{
+router.post('/', async (req, res, next) =>{
     try {
         console.log(req.body, 'this is req.body');
         req.body.user = req.session.userId;

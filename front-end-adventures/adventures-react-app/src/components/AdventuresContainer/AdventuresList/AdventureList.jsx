@@ -4,11 +4,11 @@ import './AdventureList.css';
 import AdventureShow from './Adventure-show';
 
 function AdventureList(props){
-    const currentUser = props.username
+    const currentUser = props.user
     console.log("this is currentUser", currentUser)
     console.log("this is adventure list")
     const adventures = props.adventures.map(function(adventure){
-        // console.log("this is adventure.user.username", adventure.user.username)
+        // console.log("this is adventure.user.user", adventure.user.user)
         return(
         
             <li key={adventure._id}>
@@ -20,10 +20,10 @@ function AdventureList(props){
                         when={adventure.when}
                         description={adventure.description}
                         image={adventure.image}
-                        username={adventure.user.username}
+                        user={adventure.user}
                         deleteAdventure={props.deleteAdventure}
                         _id={adventure._id}
-                        currentUser={props.username}
+                        currentUser={props.user}
                         updateAdventure={props.updateAdventure}
                         />
     

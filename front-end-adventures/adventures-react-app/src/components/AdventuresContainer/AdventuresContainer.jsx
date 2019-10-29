@@ -18,12 +18,12 @@ class AdventuresContainer extends Component {
                 
                 
                 <AdventureList 
-                    currentUser={this.props.username}   
+                    currentUser={this.props.user}   
                     adventures={this.props.adventures} 
                     updateAdventure={this.props.updateAdventure} 
                     deleteAdventure={this.props.deleteAdventure} 
                     loggedIn={this.props.loggedIn} 
-                    username={this.props.username}/>
+                    user={this.props.user}/>
 
             </div>
         )

@@ -49,10 +49,10 @@ class Chat extends Component {
         })
     }
      const postMessage = async (data) => {
-        let room = data.room
+        // let room = data.room
         console.log(data, "this is data from post req" )
         try{
-            const newMessage = await fetch(`http://localhost:9000/chat/${room}`, {
+            const newMessage = await fetch('http://localhost:9000/chat', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 credentials: 'include',
@@ -115,7 +115,7 @@ getMessages = async () => {
                         {this.state.messages.map(function(message, i){
                             const key = `message-${i}`;
                             return(
-                                <div key={key}>{message.username} : {message.message}</div>
+                                <div key={key}>{message.user} : {message.message}</div>
                             )
                         })}
                     </div>

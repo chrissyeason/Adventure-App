@@ -13,7 +13,7 @@ class Navigation extends Component {
         super(props);
         this.state = {
           loggedIn: false,
-          username: null,
+          user: null,
           renderNewAdventure: false,
           adventures: []
         }
@@ -48,7 +48,7 @@ class Navigation extends Component {
                                 this.props.loggedIn ?
                                     <NewAdventure className="Modal" 
                                         addAdventure={this.props.addAdventure}
-                                        username={this.props.username}
+                                        user={this.props.user}
                                         updateAdventure={this.props.updateAdventure}
                                         deleteAdventure={this.props.deleteAdventure}/> :
                                     ''    
@@ -68,7 +68,7 @@ class Navigation extends Component {
                                 exact path="/chat" 
                                 render={(props) => <Chat
                                 {...props}
-                                username={this.props.username}
+                                user={this.props.user}
                                 loggedIn={this.props.loggedIn}/>}
                                 />
                         </div>
