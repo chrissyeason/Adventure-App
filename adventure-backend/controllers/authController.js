@@ -6,7 +6,6 @@ const bcrypt = require('bcryptjs')
 // index route
 router.get('/', async (req, res) =>{
     try {
-        // const allAdventures = await Adventures.find();
         res.send('user route is working')
     }catch(err){
         res.send(err)
