@@ -6,7 +6,7 @@ const Messages = require('../models/messages');
 router.get('/:room', async (req, res) =>{
     // let room = req.params.room
     try {
-        const allMessages = await Messages.find({room: req.params.room}).populate('user');
+        const allMessages = await Messages.find({"room": req.params.room}).populate('user');
         // this is the response to react
         console.log(req.params.room, 'this is req.params.room')
         res.json({

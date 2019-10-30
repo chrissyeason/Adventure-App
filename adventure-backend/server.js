@@ -47,10 +47,16 @@ server = app.listen(9000, function() {
     console.log('listening on port 9000');
 })
 
+const chatRooms = ['climbing', 'hiking', 'climbing'];
 io = socket(server);
 
 io.on('connection', (socket) => {
     console.log(socket.id);
+
+    socket.on('joinRoom', (room) => {
+        console.log('user joined', room)
+        socket.join(room)
+    })
 
     socket.on('SEND_MESSAGE', function(data){
         // let newMessage = {
@@ -64,3 +70,9 @@ io.on('connection', (socket) => {
         io.emit('RECEIVE_MESSAGE', data);
     })
   });
+
+// const climb = io.of('/climbing');
+//     climb.on('connection', function(socket){
+//         console.log('welcome t the climbing room')
+//         socket.emit('welcome', 'welcome to the climbing room');
+//     });

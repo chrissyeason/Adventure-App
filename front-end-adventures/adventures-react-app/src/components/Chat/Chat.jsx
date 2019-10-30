@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Chat.css';
-import Hiking from '../Chat/rooms/Hiking';
+import Messages from '../Chat/Messages';
 import { BrowserRouter as Router, Route, Link, Switch, useRouteMatch, useParams } from "react-router-dom";
 import io from 'socket.io-client';
 
@@ -17,7 +17,7 @@ class Chat extends Component {
     this.socket = io('localhost:9000');
 
     this.socket.on('RECEIVE_MESSAGE', function(data){
-        addMessage(data);
+        addMessage(data); 
         console.log(data, "this is data from socket.on function")
     });
     
@@ -27,11 +27,15 @@ class Chat extends Component {
         console.log(data, "this is data from add message function");
         this.setState({
             messages: [...this.state.messages, data]
+            // message: data.message
         });
         console.log(this.state.messages, "this is add message function");
         };
     }
-
+    this.joinRoom = (e) =>{
+        console.log('joinRoom function here', this.state.room)
+        this.socket.emit('joinRoom', this.state.room)
+    }
     // sends the message to the server every time you click 'send'
     this.sendMessage = (e) => {
         e.preventDefault();
@@ -41,12 +45,13 @@ class Chat extends Component {
             message: this.state.message,
             room: this.state.room,
         });
-        this.setState({message: ''});
+        // this.setState({message: ''});
         postMessage({
             user: this.props.user,
             message: this.state.message,
             room: this.state.room,
         })
+        document.getElementById('textContent').value=''
     }
      const postMessage = async (data) => {
         // let room = data.room
@@ -68,7 +73,11 @@ class Chat extends Component {
     }
 }
 // componentDidMount(){
-//     this.getMessages(room);
+//     this.setState({
+//         room: 'camping',
+//     })
+//     console.log()
+//     this.getMessages(this.state.room);
 //     console.log("messages container componentDidMount")
 // }
 
@@ -83,6 +92,7 @@ getMessages = async () => {
               console.log("this is parsedResponse", parsedResponse)
               this.setState({
                   messages: parsedResponse.data
+                //   messages: [parsedResponse.data]
               })
               console.log(parsedResponse.data)
           }
@@ -94,10 +104,17 @@ getMessages = async () => {
   selectRoom = (e) =>{
     //   set state of room to value of name
     this.setState({
-        room: e.target.name
+        room: e.target.name,
+    }, ()=> {
+        this.joinRoom();
+        this.getMessages();
     })
-    this.getMessages();
   }
+//   messages = this.state.messages.map = ((message, i)=> {
+//     const key = `message-${i}`;
+//     <li key={key}>value= {message.user} : {message.message}</li>                              
+//   })
+  
   render(){
     return(
         <div>
@@ -112,17 +129,18 @@ getMessages = async () => {
             }
             <div className="container">               
                     <div className="messages">
-                        {this.state.messages.map(function(message, i){
+                        {/* {messages = this.state.messages.map(function(message, i){
                             const key = `message-${i}`;
                             return(
-                                <div key={key}>{message.user} : {message.message}</div>
-                            )
-                        })}
+                                <li key={key}>{message.user} : {message.message}</li>                              
+                            ) */}
+                            <Messages messages={this.state.messages}/>
+                        
                     </div>
-                
+                    
                     <div className="chat-footer">
                         <hr/>
-                        <input type="text" placeholder="Message" value={this.state.message} onChange={e => this.setState({message: e.target.value})} className="form-control" required/>
+                        <input id="textContent" type="text" placeholder="Message" value={this.state.message} onChange={e => this.setState({message: e.target.value})} className="form-control" required/>
                         <br/>
                         <button onClick={this.sendMessage} className="send-button">Send</button>
                     </div>
