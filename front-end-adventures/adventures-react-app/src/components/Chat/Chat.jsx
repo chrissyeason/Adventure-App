@@ -27,7 +27,6 @@ class Chat extends Component {
         console.log(data, "this is data from add message function");
         this.setState({
             messages: [...this.state.messages, data]
-            // message: data.message
         });
         console.log(this.state.messages, "this is add message function");
         };
@@ -45,7 +44,7 @@ class Chat extends Component {
             message: this.state.message,
             room: this.state.room,
         });
-        // this.setState({message: ''});
+        this.setState({message: ''});
         postMessage({
             user: this.props.user,
             message: this.state.message,
@@ -92,7 +91,6 @@ getMessages = async () => {
               console.log("this is parsedResponse", parsedResponse)
               this.setState({
                   messages: parsedResponse.data
-                //   messages: [parsedResponse.data]
               })
               console.log(parsedResponse.data)
           }
@@ -140,7 +138,7 @@ getMessages = async () => {
                     
                     <div className="chat-footer">
                         <hr/>
-                        <input id="textContent" type="text" placeholder="Message" value={this.state.message} onChange={e => this.setState({message: e.target.value})} className="form-control" required/>
+                        <input id="textContent" type="text" placeholder="Message" onChange={e => this.setState({message: e.target.value})} className="form-control" required/>
                         <br/>
                         <button onClick={this.sendMessage} className="send-button">Send</button>
                     </div>

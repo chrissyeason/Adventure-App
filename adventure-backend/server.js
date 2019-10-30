@@ -29,7 +29,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use((req, res, next)=>{
-    console.log(req.session.userId)
+    // res.locals.currentUser = req.session.userId
+    // console.log(req.locals.currentUser)
     next();
 })
 
@@ -57,8 +58,9 @@ io.on('connection', (socket) => {
         console.log('user joined', room)
         socket.join(room)
     })
-
+// message from client
     socket.on('SEND_MESSAGE', function(data){
+        // console.log(session.userId)
         // let newMessage = {
         //     user: data.user,
         //     message: data.message,

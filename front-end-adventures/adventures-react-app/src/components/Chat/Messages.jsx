@@ -4,7 +4,7 @@ function Messages(props){
     const allMessages = props.messages.map(function(message, i){  
         const key = `message-${i}`;                                
     return(
-            <li key={key}>{message.user.user} : {message.message}</li>
+            <li key={key}>{message.user} : {message.message}</li>
     )
 })
 return(

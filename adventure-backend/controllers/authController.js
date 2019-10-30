@@ -1,7 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const User = require('../models/user');
-const bcrypt = require('bcryptjs')
+const express   = require('express');
+const router    = express.Router();
+const User      = require('../models/user');
+const bcrypt    = require('bcryptjs');
+
 
 // index route
 router.get('/', async (req, res) =>{
@@ -25,7 +26,7 @@ router.post('/login', async (req, res) =>{
                 req.session.userId = foundUser._id;
                 req.session.user = foundUser.user;
                 req.session.logged = true;
-
+                console.log(req.session.userId, 'this is req.session')
                 res.json({
                     status: {
                       code: 200
@@ -66,7 +67,7 @@ router.post('/register', async (req, res) =>{
         req.session.userId = createdUser._id;
         req.session.user = createdUser.user;
         req.session.logged = true;
-        
+        console.log(req.session.userId, 'this is session.userId')
         res.json({
             status: {
                 code: 201
