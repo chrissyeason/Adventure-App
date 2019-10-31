@@ -9,7 +9,7 @@ class Messages extends Component{
         let messages = []
         this.props.messages.map(function(message, i){  
             const key = `message-${i}`; 
-            messages.push(<li key={key}>{message.user} : {message.message}</li>)                               
+            messages.push(<li key={key}>{message.username} : {message.message}</li>)                               
         })
         return [...messages]
     }

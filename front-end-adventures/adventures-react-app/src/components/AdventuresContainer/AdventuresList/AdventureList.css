@@ -2,7 +2,14 @@
 
 .list-container {
     margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     /* padding: 50px; */
+}
+.list-container h2 {
+    margin-top: 3%;
+    text-transform: lowercase;
 }
 .adventure-list-images {
     border: solid white 5px;
@@ -28,17 +35,13 @@ li {
 h5 {
     font-size: 1.5vw;
 }
-.list-container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-}
 .modal-image{
     max-width: 98%;
 }
 #show-button {
     font-family: 'Oswald', sans-serif;
     font-size: 32px;
+    padding: 3%;
 }
 #show-button img {
     max-height: 270px;

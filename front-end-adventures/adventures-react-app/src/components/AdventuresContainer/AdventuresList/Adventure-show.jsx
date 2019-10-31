@@ -9,9 +9,10 @@ class AdventureShow extends Component{
             modal:false
         }
         this.toggle = this.toggle.bind(this);
-        // currentUser = this.props.user
-    }
+        // currentUser = this.props.username
+        console.log(props)
 
+    }
     toggle() {
         this.setState(prevState => ({
           modal: !prevState.modal
@@ -19,9 +20,10 @@ class AdventureShow extends Component{
     }
 
     render(){
+
       return(       
             <div className="show-adventure">
-                <Button id="show-button" color="white" onClick={this.toggle}><img src={this.props.image}/><h2>{this.props.what}</h2></Button>
+                <Button id="show-button" color="white" onClick={this.toggle}>{this.props.what}</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalHeader id="show-modal-header" toggle={this.toggle}>{this.props.what} {this.props.where}</ModalHeader>
                 <ModalBody>
@@ -34,16 +36,16 @@ class AdventureShow extends Component{
                     
                     <p className="description">{this.props.description}</p>
                     <img src={this.props.image} className="modal-image"/>
-                    <p>uploaded by: {this.props.user}</p>
-                    <ModalFooter>
+                    <p>uploaded by: {this.props.username}</p>
+                    {/* <p>{this.props.currentUser}</p> */}
                     
                     {
-                        this.props.currentUser === this.props.user ?
+                        this.props.currentUser === this.props.username ?
                             <button onClick={() => {this.props.deleteAdventure(this.props._id)}}>delete</button> :
                         ''
                     }
                     {
-                        this.props.currentUser === this.props.user ?
+                        this.props.currentUser === this.props.username ?
                             <UpdateAdventure updateAdventure={this.props.updateAdventure}
                             what={this.props.what}
                             where={this.props.where}
@@ -52,8 +54,7 @@ class AdventureShow extends Component{
                             id={this.props._id}
                             /> :
                             ''
-                    }      
-                    </ModalFooter>       
+                    }             
                 </ModalBody>
                 </Modal>
             </div>        

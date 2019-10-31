@@ -65,7 +65,7 @@ router.post('/register', async (req, res) =>{
 
         // set session info
         req.session.userId = createdUser._id;
-        req.session.user = createdUser.user;
+        req.session.username = createdUser.username;
         req.session.logged = true;
         console.log(req.session.userId, 'this is session.userId')
         res.json({

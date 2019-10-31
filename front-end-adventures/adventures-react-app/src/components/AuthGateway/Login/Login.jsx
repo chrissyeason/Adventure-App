@@ -7,7 +7,7 @@ class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
-            user: null,
+            username: null,
             password: null,
             modal: false
         }
@@ -29,7 +29,7 @@ class Login extends Component {
         // register function coming in from parent
         console.log('submitted the form')
         this.props.handleLogin({
-            user: this.state.user,
+            username: this.state.username,
             password: this.state.password,
         });
     }
@@ -43,7 +43,7 @@ class Login extends Component {
                 <ModalHeader toggle={this.toggle}>Login</ModalHeader>
                 <ModalBody>
                     <form onSubmit={this.handleSubmit}>
-                        <input type="text" name="user" placeholder="user" onChange={this.handleChange}/>
+                        <input type="text" name="username" placeholder="username" onChange={this.handleChange}/>
                         <input type="password" name="password" placeholder="password" onChange={this.handleChange}/>
                         <input type="submit" value="submit" onClick={this.toggle}/>
                     </form>

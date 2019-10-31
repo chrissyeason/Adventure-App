@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import AdventureList from './AdventuresList/AdventureList';
 import '../AdventuresContainer/AdventuresContainer.css';
-
+import { get } from 'http';
 
 class AdventuresContainer extends Component {
     constructor(props){
@@ -18,12 +18,12 @@ class AdventuresContainer extends Component {
                 
                 
                 <AdventureList 
-                    currentUser={this.props.user}   
+                    currentUser={this.props.username}   
                     adventures={this.props.adventures} 
                     updateAdventure={this.props.updateAdventure} 
                     deleteAdventure={this.props.deleteAdventure} 
                     loggedIn={this.props.loggedIn} 
-                    user={this.props.user}/>
+                    username={this.props.username}/>
 
             </div>
         )

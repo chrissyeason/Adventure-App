@@ -12,7 +12,7 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
-      user: null,
+      username: null,
       adventures: []
     }
   }
@@ -118,7 +118,7 @@ class App extends Component {
         console.log('registration successful');
         this.setState({
           loggedIn: true,
-          user: parsedResponse.data.user
+          username: parsedResponse.data.username
         })
       }
       
@@ -140,7 +140,7 @@ class App extends Component {
       console.log('login successful');
       this.setState({
         loggedIn: true,
-        user: parsedResponse.data.user
+        username: parsedResponse.data.username
       })
     }else{
       alert(parsedResponse.status.message);
@@ -167,7 +167,7 @@ class App extends Component {
             addAdventure={this.addAdventure} 
             adventures={this.state.adventures} 
             loggedIn={this.state.loggedIn} 
-            user={this.state.user} 
+            username={this.state.username} 
             handleRegistration={this.handleRegistration} 
             handleLogin={this.handleLogin}
             updateAdventure={this.updateAdventure}
@@ -177,7 +177,7 @@ class App extends Component {
           <Route exact path="/" render={(props) => 
             <Home {...props} 
               adventures={this.state.adventures} 
-              user={this.state.user}
+              usernamename={this.state.username}
               deleteAdventure={this.deleteAdventure}
               updateAdventure={this.updateAdventure}
               addAdventure={this.addAdventure} 
@@ -187,22 +187,15 @@ class App extends Component {
           <Route exact path="/adventures" 
             render={(props) => <AdventuresContainer 
               {...props} 
-              currentUser={this.user} 
+              currentUser={this.username} 
               adventures={this.state.adventures} 
               addAdventure={this.addAdventure} 
               updateAdventure={this.updateAdventure} 
               deleteAdventure={this.deleteAdventure} 
               loggedIn={this.state.loggedIn} 
-              user={this.state.user}/>}
+              username={this.state.username}/>}
             />
-            {/* <Route 
-              exact path="/chat" 
-              render={(props) => <Chat
-              {...props}
-              currentUser={this.user}
-              user={this.user}
-              loggedIn={this.props.loggedIn}/>}
-              /> */}
+          
             </Switch>
         </main>
         <footer>
