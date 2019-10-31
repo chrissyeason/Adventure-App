@@ -56,7 +56,7 @@ class Navigation extends Component {
 
                             {
                                 this.props.loggedIn ?
-                                    <button><Link to="/chat">chat</Link></button> :
+                                    <button id="chat-button"><Link to="/chat">chat</Link></button> :
                                     ''                                      
                             }
                             

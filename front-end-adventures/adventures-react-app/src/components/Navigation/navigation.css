@@ -111,6 +111,16 @@
 .Modal button:focus {
     box-shadow: none;
 }
+
+/* chat component button */
+#chat-button {
+    margin-left: 2%;
+    border: none;
+}
+#chat-button:hover {
+    border-bottom: solid #E76F51 4px;
+    padding-top: 6px;
+}
 @media only screen and (max-width: 600px) {
     .nav-bar {
         display: block;

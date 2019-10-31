@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './Chat.css';
 import Messages from '../Chat/Messages';
-import { BrowserRouter as Router, Route, Link, Switch, useRouteMatch, useParams } from "react-router-dom";
 import io from 'socket.io-client';
 
 class Chat extends Component {
@@ -11,8 +10,9 @@ class Chat extends Component {
             user: '',
             message: '',
             room: '',
-            messages: []
+            messages: [],
         };
+
     // socket listening
     this.socket = io('localhost:9000');
 
@@ -29,8 +29,11 @@ class Chat extends Component {
             messages: [...this.state.messages, data]
         });
         console.log(this.state.messages, "this is add message function");
+        // this.Messages.scrollToBottom();
         };
     }
+    // const messages = document.getElementById('message-box');
+    
     this.joinRoom = (e) =>{
         console.log('joinRoom function here', this.state.room)
         this.socket.emit('joinRoom', this.state.room)
@@ -127,11 +130,6 @@ getMessages = async () => {
             }
             <div className="container">               
                     <div className="messages">
-                        {/* {messages = this.state.messages.map(function(message, i){
-                            const key = `message-${i}`;
-                            return(
-                                <li key={key}>{message.user} : {message.message}</li>                              
-                            ) */}
                             <Messages messages={this.state.messages}/>
                         
                     </div>

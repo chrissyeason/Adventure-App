@@ -1,20 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
+import './Messages.css';
 
-function Messages(props){
-    const allMessages = props.messages.map(function(message, i){  
-        const key = `message-${i}`;                                
+class Messages extends Component{
+    constructor(props){
+        super(props);
+    }
+    renderMessages(){
+        let messages = []
+        this.props.messages.map(function(message, i){  
+            const key = `message-${i}`; 
+            messages.push(<li key={key}>{message.user} : {message.message}</li>)                               
+        })
+        return [...messages]
+    }
+    componentDidUpdate(){
+        this.scrollToBottom();
+    }
+    scrollToBottom = () => {
+        window.scrollTo(0,document.body.scrollHeight)   
+    }
+    
+render(){
     return(
-            <li key={key}>{message.user} : {message.message}</li>
+        <div id="message-box">
+            <h1>messages component</h1>
+            <ul >
+                {this.renderMessages()}
+            </ul>
+        </div>
     )
-})
-return(
-    <div>
-        <h1>messages component</h1>
-        <ul>
-            {allMessages}
-        </ul>
-    </div>
-)
 }
+}
+
 
 export default Messages;
