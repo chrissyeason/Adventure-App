@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Chat.css';
 import Messages from '../Chat/Messages';
 import io from 'socket.io-client';
+import $ from 'jquery';
 
 class Chat extends Component {
     constructor(props){
@@ -54,6 +55,7 @@ class Chat extends Component {
             room: this.state.room,
         })
         document.getElementById('textContent').value=''
+        this.scrollToBottom();
     }
      const postMessage = async (data) => {
         // let room = data.room
@@ -74,15 +76,21 @@ class Chat extends Component {
         }
     }
 }
-// componentDidMount(){
-//     this.setState({
-//         room: 'camping',
-//     })
-//     console.log()
-//     this.getMessages(this.state.room);
-//     console.log("messages container componentDidMount")
-// }
-
+componentDidMount(){
+    this.setState({
+        room: 'hiking',
+    })
+}
+scrollToBottom = () => {
+    // window.scrollTo(0,document.body.scrollHeight) 
+    // $(document).ready()  
+    // $('#messages').animate({
+    //     scrollTop: $('#messages').get(0).scrollHeight
+    // }, 1000);
+    document.querySelector('#send-button').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
 // get route makes a fetch request
 getMessages = async () => {
     let room = this.state.room
@@ -109,6 +117,7 @@ getMessages = async () => {
     }, ()=> {
         this.joinRoom();
         this.getMessages();
+        this.scrollToBottom();
     })
   }
 //   messages = this.state.messages.map = ((message, i)=> {
@@ -118,19 +127,21 @@ getMessages = async () => {
   
   render(){
     return(
-        <div>
+        <div className="chat-container">
             {
                 this.props.loggedIn ?
-            <div>
+            <aside>
                 <button name="hiking" onClick={this.selectRoom}>hiking</button>
+                
                 <button name="camping" onClick={this.selectRoom}>camping</button>
+                
                 <button name="climbing" onClick={this.selectRoom}>climbing</button>
-            </div> :
+            </aside> :
             ''
             }
-            <div className="container">               
-                    <div className="messages">
-                            <Messages messages={this.state.messages}/>
+            <div className="messages-container">               
+                    <div id="messages">
+                            <Messages messages={this.state.messages} room={this.state.room}/>
                         
                     </div>
                     
@@ -138,7 +149,7 @@ getMessages = async () => {
                         <hr/>
                         <input id="textContent" type="text" placeholder="Message" onChange={e => this.setState({message: e.target.value})} className="form-control" required/>
                         <br/>
-                        <button onClick={this.sendMessage} className="send-button">Send</button>
+                        <button onClick={this.sendMessage} id="send-button">Send</button>
                     </div>
             </div>     
         </div>                   

@@ -17,13 +17,26 @@ class Messages extends Component{
         this.scrollToBottom();
     }
     scrollToBottom = () => {
-        window.scrollTo(0,document.body.scrollHeight)   
+    //     window.scrollTo(0,document.body.scrollHeight) 
+    //     // let message = document.getElementById('message-box')  
+    //     // .animate({
+    //     //     scrollTop: message.get(0).scrollHeight
+    //     // }, 1000);
+    //     // })
+    document.querySelector('#send-button').scrollIntoView({
+        behavior: 'smooth'
+    });
     }
+    // const scrollSki = () =>{
+    //     $('#messages').animate({
+    //       scrollTop: $('#messages').get(0).scrollHeight
+    //     }, 1000);
+    //   };
     
 render(){
     return(
         <div id="message-box">
-            <h1>messages component</h1>
+            <h4>{this.props.room} room</h4>
             <ul >
                 {this.renderMessages()}
             </ul>
