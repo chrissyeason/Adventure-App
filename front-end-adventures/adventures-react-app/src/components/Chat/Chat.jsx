@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './Chat.css';
 import Messages from '../Chat/Messages';
 import io from 'socket.io-client';
-import $ from 'jquery';
 
 class Chat extends Component {
     constructor(props){
@@ -116,11 +115,7 @@ getMessages = async () => {
         this.scrollToBottom();
     })
   }
-//   messages = this.state.messages.map = ((message, i)=> {
-//     const key = `message-${i}`;
-//     <li key={key}>value= {message.user} : {message.message}</li>                              
-//   })
-  
+
   render(){
     return(
         <div className="chat-container">

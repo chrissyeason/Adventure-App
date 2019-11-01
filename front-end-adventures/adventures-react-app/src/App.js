@@ -177,7 +177,7 @@ class App extends Component {
           <Route exact path="/" render={(props) => 
             <Home {...props} 
               adventures={this.state.adventures} 
-              usernamename={this.state.username}
+              username={this.state.username}
               deleteAdventure={this.deleteAdventure}
               updateAdventure={this.updateAdventure}
               addAdventure={this.addAdventure} 
