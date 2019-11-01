@@ -30,10 +30,10 @@ class Chat extends Component {
             messages: [...this.state.messages, data]
         });
         console.log(this.state.messages, "this is add message function");
-        // this.Messages.scrollToBottom();
+        
         };
     }
-    // const messages = document.getElementById('message-box');
+    
     
     this.joinRoom = (e) =>{
         console.log('joinRoom function here', this.state.room)
@@ -56,6 +56,7 @@ class Chat extends Component {
         })
         document.getElementById('textContent').value=''
         this.scrollToBottom();
+        e.target.classList.add('setCurrentUserStyle');
     }
      const postMessage = async (data) => {
         // let room = data.room
@@ -78,15 +79,10 @@ class Chat extends Component {
 }
 componentDidMount(){
     this.setState({
-        room: 'hiking',
+        room: 'chat',
     })
 }
 scrollToBottom = () => {
-    // window.scrollTo(0,document.body.scrollHeight) 
-    // $(document).ready()  
-    // $('#messages').animate({
-    //     scrollTop: $('#messages').get(0).scrollHeight
-    // }, 1000);
     document.querySelector('#send-button').scrollIntoView({
         behavior: 'smooth'
     });
@@ -141,14 +137,14 @@ getMessages = async () => {
             }
             <div className="messages-container">               
                     <div id="messages">
-                            <Messages messages={this.state.messages} room={this.state.room}/>
+                            <Messages messages={this.state.messages} room={this.state.room} username={this.props.username}/>
                         
                     </div>
                     
                     <div className="chat-footer">
                         <hr/>
-                        <input id="textContent" type="text" placeholder="Message" onChange={e => this.setState({message: e.target.value})} className="form-control" required/>
-                        <br/>
+                        <input id="textContent" type="text" placeholder="Message" onChange={e => this.setState({message: e.target.value})} className="form-control" />
+                        
                         <button onClick={this.sendMessage} id="send-button">Send</button>
                     </div>
             </div>     
