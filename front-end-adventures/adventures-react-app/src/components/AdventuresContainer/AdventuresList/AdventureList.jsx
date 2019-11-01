@@ -11,7 +11,7 @@ function AdventureList(props){
         return(
         
             <li key={adventure._id}>
-                    <img src={adventure.image} alt={adventure.description} className="adventure-list-images"/>
+                    {/* <img src={adventure.image} alt={adventure.description} className="adventure-list-images"/> */}
 
                     <AdventureShow 
                         what={adventure.what}

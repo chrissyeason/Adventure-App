@@ -46,6 +46,23 @@ h5 {
 #show-button img {
     max-height: 270px;
 }
+/* delete button */
+#delete-btn {
+    background-color: #E76F51;
+    border: solid #E76F51 1px;
+    border-radius: 2px;
+    color: white;
+    padding: 8px 15px 8px 15px;
+    margin-right: 10px;
+}
+
+#updateButton {
+    color: #E76F51;
+    border: solid #E76F51 1px;
+    border-radius: 2px;
+    padding: 8px 15px 8px 15px;
+    margin-right: 10px;
+}
 @media only screen and (max-width: 600px) {
     .list-container {
         display: block;
