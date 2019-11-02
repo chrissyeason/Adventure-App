@@ -16,7 +16,7 @@ router.get('/', async (req, res) =>{
 router.post('/login', async (req, res) =>{
     // first query the databse to see if the user exists
     try{
-        const foundUser = await User.findOne({user: req.body.user});
+        const foundUser = await User.findOne({username: req.body.username});
         console.log(foundUser, 'foundUser');
         // If the user exists we'll use bcrypt to see if their password is valid
         if(foundUser){
@@ -24,7 +24,7 @@ router.post('/login', async (req, res) =>{
             if(bcrypt.compareSync(req.body.password, foundUser.password)) {
                 // if valid, we'll set hte session
                 req.session.userId = foundUser._id;
-                req.session.user = foundUser.user;
+                req.session.username = foundUser.username;
                 req.session.logged = true;
                 console.log(req.session.userId, 'this is req.session')
                 res.json({

@@ -124,7 +124,7 @@ class App extends Component {
       
   }
   handleLogin = async (formData) =>{
-    console.log(formData);
+    console.log(formData, 'this is form data');
     console.log("logging in");
     const registerResponse = await fetch('http://localhost:9000/user/login', {
       method: 'POST',
