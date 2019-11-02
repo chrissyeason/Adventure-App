@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import NewAdventure from './NewAdventure/NewAdventure';
 import AdventureList from './AdventuresList/AdventureList';
 import '../AdventuresContainer/AdventuresContainer.css';
 import { get } from 'http';

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch, } from "react-router-dom"
 import './App.css';
 import AdventuresContainer from './components/AdventuresContainer/AdventuresContainer';
 import AdventureList from './components/AdventuresContainer/AdventuresList/AdventureList';
 import NewAdventure from './components/AdventuresContainer/NewAdventure/NewAdventure';
 import Navigation from './components/Navigation/Navigation';
 import Home from './components/Home/Home';
-
+import Chat from './components/Chat/Chat';
 class App extends Component {
   constructor(){
     super();
@@ -24,13 +24,13 @@ class App extends Component {
   getAdventures = async () => {
         try{
             const adventures = await fetch('http://localhost:9000/adventures');
-            const parsedResonse = await adventures.json();
-            if(parsedResonse.status.code === 200){
-                console.log("this is parsedResponse", parsedResonse)
+            const parsedResponse = await adventures.json();
+            if(parsedResponse.status.code === 200){
+                console.log("this is parsedResponse", parsedResponse)
                 this.setState({
-                    adventures: parsedResonse.data
+                    adventures: parsedResponse.data
                 })
-                console.log(parsedResonse.data)
+                console.log(parsedResponse.data)
             }
         }catch(err){
             console.log(err)
@@ -124,7 +124,7 @@ class App extends Component {
       
   }
   handleLogin = async (formData) =>{
-    console.log(formData);
+    console.log(formData, 'this is form data');
     console.log("logging in");
     const registerResponse = await fetch('http://localhost:9000/user/login', {
       method: 'POST',
@@ -153,7 +153,8 @@ class App extends Component {
       credentials: 'include'
       })
       this.setState({
-        loggedIn: false
+        loggedIn: false,
+        username: null,
       })
     }
     
@@ -173,6 +174,7 @@ class App extends Component {
             updateAdventure={this.updateAdventure}
             deleteAdventure={this.deleteAdventure}/>
         <main>
+          <Switch>
           <Route exact path="/" render={(props) => 
             <Home {...props} 
               adventures={this.state.adventures} 
@@ -194,6 +196,8 @@ class App extends Component {
               loggedIn={this.state.loggedIn} 
               username={this.state.username}/>}
             />
+          
+            </Switch>
         </main>
         <footer>
           <p><i>do cool shit</i> was designed and developed by <a href="http://www.chrissyeasondesigns.com" target="_blank">Chrissy Eason. <strong>Hire her!</strong></a></p>

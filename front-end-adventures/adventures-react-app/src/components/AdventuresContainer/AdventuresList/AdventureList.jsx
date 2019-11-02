@@ -1,5 +1,4 @@
 import React from 'react';
-import UpdateAdventure from './UpdateAdventure';
 import './AdventureList.css';
 import AdventureShow from './Adventure-show';
 
@@ -8,11 +7,11 @@ function AdventureList(props){
     console.log("this is currentUser", currentUser)
     console.log("this is adventure list")
     const adventures = props.adventures.map(function(adventure){
-        console.log("this is adventure.user.username", adventure.user.username)
+        // console.log("this is adventure.user.username", adventure.user.username)
         return(
         
             <li key={adventure._id}>
-                    <img src={adventure.image} alt={adventure.description} className="adventure-list-images"/>
+                    {/* <img src={adventure.image} alt={adventure.description} className="adventure-list-images"/> */}
 
                     <AdventureShow 
                         what={adventure.what}

@@ -10,7 +10,7 @@ const adventureSchema = new Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }
+    },
 })
 const Adventure = mongoose.model('Adventure', adventureSchema);
 module.exports = Adventure;

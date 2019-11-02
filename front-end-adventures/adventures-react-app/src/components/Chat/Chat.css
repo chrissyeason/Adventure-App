@@ -1,0 +1,83 @@
+/* entire chat div */
+.chat-container {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    margin-top: 9%;
+    grid-column-gap: 5%;
+}
+/* div for right side of screen */
+.messages-container {
+    word-wrap: break-word;
+    background-color: #fff;
+    max-width: 90vw;
+    max-height: 90vh;
+    grid-column: 2;
+    overflow: scroll;
+}
+#send-button{
+    display: block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    margin-left: 6%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: #2A9D8F;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,
+                background-color .15s ease-in-out,
+                border-color .15s ease-in-out,
+                box-shadow .15s ease-in-out;
+    width: 75%;
+    height: calc(1.5em + .75rem + 2px); 
+    background-clip: padding-box;           
+}
+.messages {
+    line-height: 1;
+    text-align: left;
+    max-height: 500px;
+}
+/* aside is div on left */
+aside button {
+    display: block;
+    border: none;
+    width: 186%;
+    height: 50px;
+    padding: 14px 28px;
+    text-align: right;
+    border-right: solid #f5f5f5 4px;
+}
+aside button:active {
+    background-color: #f5f5f5;
+    border-right: solid #E76F51 3px;
+}
+aside button:hover {
+    background-color: #f5f5f5;
+    border-right: solid #E76F51 4px;
+    display: block;
+    width: 186%;
+}
+aside {
+    grid-column: 1;
+    border-right: solid #f5f5f5 2px;
+    /* margin-left: 12%; */
+    position: fixed;
+    /* width: 186% */
+}
+/* input box */
+#textContent {
+    width: 75%;
+    margin-bottom: 8px;
+    margin-left: 6%;
+}
+.setCurrentUserStyle li{
+    color: blue;
+}
+/* hr {
+    width: 90%;
+} */

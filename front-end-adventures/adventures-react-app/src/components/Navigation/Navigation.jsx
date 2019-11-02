@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import { Button } from 'reactstrap';
 import AuthGateway from '../AuthGateway/AuthGateway';
-import {Link} from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import NewAdventure from '../AdventuresContainer/NewAdventure/NewAdventure';
-import AdventuresList from '../AdventuresContainer/AdventuresList/AdventureList';
 import './navigation.css';
+import logo from './do-cool-shit-logo.png';
 import AdventuresContainer from '../AdventuresContainer/AdventuresContainer';
+import Home from '../Home/Home';
+import Chat from '../Chat/Chat';
 
 class Navigation extends Component {
     constructor(props){
@@ -19,42 +19,61 @@ class Navigation extends Component {
         }
       }
   
- startLogOut = () => {
-  this.setState({
-    loggedIn: false
-  })
-  this.props.handleLogout(this.state)
- }
+    startLogOut = () => {
+    this.setState({
+        loggedIn: false
+    })
+    this.props.handleLogout(this.state)
+    }
   
-   
-    
         render(){
             return(
-                <div className="nav-bar">
-                    <a href="/" id="nav-logo"><img src="do-cool-shit-logo.png" id="logo"/></a>
-                    
-                    <div className="discover-button">
-                        <button><a href="/adventures" id="discover">discover</a></button>
+                
+                    <div>
+                        <nav className="nav-bar">
+                            <Link to="/" id="nav-logo"><img src={logo} id="logo"/></Link>
+                            
+                            <div className="discover-button">
+                                <button><Link to="/adventures"  id="discover">discover</Link></button>
+                                
+                            </div>
+                            {
+                            this.props.loggedIn ?
+                                <button id="log-out" onClick={this.startLogOut}>log out</button> :
+                                <AuthGateway 
+                                    handleRegistration={this.props.handleRegistration} 
+                                    handleLogin={this.props.handleLogin}/> 
+                            }
+                            {
+                                this.props.loggedIn ?
+                                    <NewAdventure className="Modal" 
+                                        addAdventure={this.props.addAdventure}
+                                        username={this.props.username}
+                                        updateAdventure={this.props.updateAdventure}
+                                        deleteAdventure={this.props.deleteAdventure}/> :
+                                    ''    
+                            }
+
+                            {
+                                this.props.loggedIn ?
+                                    <button id="chat-button"><Link to="/chat">chat</Link></button> :
+                                    ''                                      
+                            }
+                            
+                            
+                        </nav> 
+                        <div>
                         
-                    </div>
-                    {
-                    this.props.loggedIn ?
-                        <button id="log-out" onClick={this.startLogOut}>log out</button> :
-                        <AuthGateway 
-                            handleRegistration={this.props.handleRegistration} 
-                            handleLogin={this.props.handleLogin}/> 
-                    }
-                    {
-                        this.props.loggedIn ?
-                            <NewAdventure className="Modal" 
-                                addAdventure={this.props.addAdventure}
+                            <Route 
+                                exact path="/chat" 
+                                render={(props) => <Chat
+                                {...props}
                                 username={this.props.username}
-                                updateAdventure={this.props.updateAdventure}
-                                deleteAdventure={this.props.deleteAdventure}/> :
-                            ''    
-                    }
-                    
-                </div> 
+                                loggedIn={this.props.loggedIn}/>}
+                                />
+                        </div>
+                    </div>
+                
             )
         }
     }

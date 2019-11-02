@@ -22,12 +22,16 @@ class Register extends Component {
         this.setState({
             [e.currentTarget.name]: e.currentTarget.value
         })
+        console.log(e.currentTarget.value)
     }
     handleSubmit = (e) =>{
         e.preventDefault();
         // register function coming in from parent
         console.log('submitted the form')
-        this.props.handleRegistration(this.state);
+        this.props.handleRegistration({
+          username: this.state.username,
+          password: this.state.password
+        });
     }
 
     

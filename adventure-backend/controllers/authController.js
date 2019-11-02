@@ -1,12 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const User = require('../models/user');
-const bcrypt = require('bcryptjs')
+const express   = require('express');
+const router    = express.Router();
+const User      = require('../models/user');
+const bcrypt    = require('bcryptjs');
+
 
 // index route
 router.get('/', async (req, res) =>{
     try {
-        // const allAdventures = await Adventures.find();
         res.send('user route is working')
     }catch(err){
         res.send(err)
@@ -26,7 +26,7 @@ router.post('/login', async (req, res) =>{
                 req.session.userId = foundUser._id;
                 req.session.username = foundUser.username;
                 req.session.logged = true;
-
+                console.log(req.session.userId, 'this is req.session')
                 res.json({
                     status: {
                       code: 200
@@ -34,9 +34,9 @@ router.post('/login', async (req, res) =>{
                     data: foundUser
                   })
             }else{
-                // send message back to client that the username or password is incorrect
+                // send message back to client that the user or password is incorrect
                 console.log("reached else statement for login route")
-                res.session.message = 'Username or Password incorrect';
+                res.session.message = 'user or Password incorrect';
                 res.json({
                     status: {
                     code: 500,
@@ -67,7 +67,7 @@ router.post('/register', async (req, res) =>{
         req.session.userId = createdUser._id;
         req.session.username = createdUser.username;
         req.session.logged = true;
-        
+        console.log(req.session.userId, 'this is session.userId')
         res.json({
             status: {
                 code: 201

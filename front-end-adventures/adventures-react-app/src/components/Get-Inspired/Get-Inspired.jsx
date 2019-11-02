@@ -1,10 +1,10 @@
 import React from 'react';
-
+import hotAirBalloon from './daniela-cuevas-t7YycgAoVSw-unsplash.jpg';
 function GetInspired(){
     return(
         <div className="get-inspired">
           <div id="get-inspired-photo">
-            <a href="https://www.visitalbuquerque.org/balloon-fiesta/?gclid=CjwKCAjwk93rBRBLEiwAcMapUTHyrSldBiKqsrNhChcf4aOu0RR6DhAx2hE2SbggpNdBDGbHB3RArxoCU8QQAvD_BwE" target="_blank"><img src="daniela-cuevas-t7YycgAoVSw-unsplash.jpg" alt="hot air balloon photo"/></a>
+            <a href="https://www.visitalbuquerque.org/balloon-fiesta/?gclid=CjwKCAjwk93rBRBLEiwAcMapUTHyrSldBiKqsrNhChcf4aOu0RR6DhAx2hE2SbggpNdBDGbHB3RArxoCU8QQAvD_BwE" target="_blank"><img src={hotAirBalloon} alt="hot air balloon photo"/></a>
           </div>
           <div id="get-inspired-info">
             <h2>Get Inspired</h2>
