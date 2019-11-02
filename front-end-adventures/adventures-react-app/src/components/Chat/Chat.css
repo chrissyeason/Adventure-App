@@ -50,7 +50,7 @@ aside button {
     height: 50px;
     padding: 14px 28px;
     text-align: right;
-    border-right: solid white 4px;
+    border-right: solid #f5f5f5 4px;
 }
 aside button:active {
     background-color: #f5f5f5;
@@ -78,3 +78,6 @@ aside {
 .setCurrentUserStyle li{
     color: blue;
 }
+/* hr {
+    width: 90%;
+} */

@@ -24,12 +24,11 @@ class Chat extends Component {
     // catches the emit from the server and adds it to the messages array
     const addMessage = (data) => {
         if(data.message !== ''){
-        console.log(data, "this is data from add message function");
-        this.setState({
-            messages: [...this.state.messages, data]
-        });
-        console.log(this.state.messages, "this is add message function");
-        
+            console.log(data, "this is data from add message function");
+            this.setState({
+                messages: [...this.state.messages, data]
+            });
+            console.log(this.state.messages, "this is add message function");
         };
     }
     
@@ -78,7 +77,7 @@ class Chat extends Component {
 }
 componentDidMount(){
     this.setState({
-        room: 'chat',
+        room: 'pick a chat',
     })
 }
 scrollToBottom = () => {
@@ -122,11 +121,20 @@ getMessages = async () => {
             {
                 this.props.loggedIn ?
             <aside>
-                <button name="hiking" onClick={this.selectRoom}>hiking</button>
+                <button name="backpack" onClick={this.selectRoom}>back pack</button>
                 
-                <button name="camping" onClick={this.selectRoom}>camping</button>
+                <button name="camp" onClick={this.selectRoom}>camp</button>
                 
-                <button name="climbing" onClick={this.selectRoom}>climbing</button>
+                <button name="climb" onClick={this.selectRoom}>climb</button>
+
+                <button name="dive" onClick={this.selectRoom}>dive</button>
+
+                <button name="hike" onClick={this.selectRoom}>hike</button>
+
+                <button name="kayak" onClick={this.selectRoom}>kayak</button>
+
+                <button name="spelunk" onClick={this.selectRoom}>spelunk</button>
+
             </aside> :
             ''
             }
@@ -137,7 +145,7 @@ getMessages = async () => {
                     </div>
                     
                     <div className="chat-footer">
-                        <hr/>
+                        <hr />
                         <input id="textContent" type="text" placeholder="Message" onChange={e => this.setState({message: e.target.value})} className="form-control" />
                         
                         <button onClick={this.sendMessage} id="send-button">Send</button>
