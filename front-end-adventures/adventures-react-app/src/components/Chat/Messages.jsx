@@ -10,7 +10,7 @@ class Messages extends Component{
         let currentUser = this.props.username
         this.props.messages.map(function(message, i){  
             const key = `message-${i}`; 
-            messages.push(<li key={key}>{message.username} : {message.message}</li>)  
+            messages.push(<li key={key} className="message-li">{message.username} : {message.message}</li>)  
             // if(currentUser === message.username){
             //     messages.push(<li key={key}>{message.username} : {message.message}</li>)
             //     return [...messages];

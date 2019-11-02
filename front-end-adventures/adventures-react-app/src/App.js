@@ -153,7 +153,8 @@ class App extends Component {
       credentials: 'include'
       })
       this.setState({
-        loggedIn: false
+        loggedIn: false,
+        username: null,
       })
     }
     
