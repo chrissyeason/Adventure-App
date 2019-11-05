@@ -4,4 +4,4 @@ This app allows users to share their experiences by uploading details and even p
 
 *give her a moment to wake up please
 
-https://frozen-taiga-22187.herokuapp.com/
+https://do-cool-shit.herokuapp.com/
